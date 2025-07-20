@@ -5,20 +5,22 @@ using UnityEngine;
 public class KeyDetector : MonoBehaviour
 {
     public KeyCode key;
-    public float perfectKeyRange = 0.1f;
-    public float goodKeyRange = 0.7f;
-    public float badKeyRange = 1.0f;
-    public float missRange = 2f;
+    public float perfectKeyRange = 0.3f;
+    public float goodKeyRange = 0.5f;
+    public float badKeyRange = 0.7f;
+    // public float missRange = 1.0f;
+    public float rayLength = 1.0f;
 
     void Update()
     {
         if (Input.GetKeyDown(key))
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, 1.0f, LayerMask.GetMask("Note"));
-
-            if (hit.collider != null)
+            bool hitSomething = false;
+            //向上检测
+            RaycastHit2D hitUp = Physics2D.Raycast(transform.position, Vector2.up, rayLength, LayerMask.GetMask("Note"));
+            if (hitUp.collider != null)
             {
-                float distance = Mathf.Abs(hit.collider.transform.position.y - transform.position.y);
+                float distance = Mathf.Abs(hitUp.collider.transform.position.y - transform.position.y);
 
                 if (distance <= perfectKeyRange)
                     Debug.Log("Perfect!");
@@ -29,13 +31,29 @@ public class KeyDetector : MonoBehaviour
                 else
                     Debug.Log("Miss!");
 
-                Destroy(hit.collider.gameObject);
+                Destroy(hitUp.collider.gameObject);
+                hitSomething = true;
             }
-            else
+
+            //向下检测
+            if (!hitSomething)
             {
-                Debug.Log("Miss! No note hit.");
+                RaycastHit2D hitDown = Physics2D.Raycast(transform.position, Vector2.down, rayLength, LayerMask.GetMask("Note"));
+                if (hitDown.collider != null)
+                {
+                    float distance = Mathf.Abs(hitDown.collider.transform.position.y - transform.position.y);
+
+                    if (hitDown.collider.transform.position.y < transform.position.y)
+                    {
+                        if (distance <= badKeyRange)
+                            Debug.Log("Late Bad!");
+                        else
+                            Debug.Log("Miss!");
+
+                        Destroy(hitDown.collider.gameObject);
+                    }
+                }
             }
         }
     }
-
 }
