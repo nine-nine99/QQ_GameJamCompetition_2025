@@ -12,8 +12,8 @@ public class NoteMover : MonoBehaviour
 
         if (transform.position.y < underJudgementLine)
         {
-            Debug.Log("音符掉出判定线!");
             Destroy(gameObject);
+            ComboManager.Instance.ResetCombo();
         }
     }
 }
