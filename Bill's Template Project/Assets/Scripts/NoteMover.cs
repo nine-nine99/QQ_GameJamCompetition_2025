@@ -14,6 +14,7 @@ public class NoteMover : MonoBehaviour
         {
             // Debug.Log("音符掉出判定线!");
             Destroy(gameObject);
+            ComboManager.Instance.ResetCombo();
         }
     }
 }

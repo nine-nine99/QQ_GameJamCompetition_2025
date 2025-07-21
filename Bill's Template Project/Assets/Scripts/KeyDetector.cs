@@ -10,6 +10,7 @@ public class KeyDetector : MonoBehaviour
     public float badKeyRange = 0.7f;
     // public float missRange = 1.0f;
     public float rayLength = 1.0f;
+    public int combo = 0;
 
     void Update()
     {
@@ -23,14 +24,25 @@ public class KeyDetector : MonoBehaviour
                 float distance = Mathf.Abs(hitUp.collider.transform.position.y - transform.position.y);
 
                 if (distance <= perfectKeyRange)
+                {
                     Debug.Log("Perfect!");
+                    ComboManager.Instance.AddCombo();
+                }
                 else if (distance <= goodKeyRange)
+                {
                     Debug.Log("Good!");
+                    ComboManager.Instance.AddCombo();
+                }
                 else if (distance <= badKeyRange)
-                    Debug.Log("Bad!");
+                {
+                    // Debug.Log("Bad!");
+                    ComboManager.Instance.ResetCombo();
+                }
                 else
-                    Debug.Log("Miss!");
-
+                {
+                    // Debug.Log("Miss!");
+                    ComboManager.Instance.ResetCombo();
+                }   
                 Destroy(hitUp.collider.gameObject);
                 hitSomething = true;
             }
@@ -46,10 +58,15 @@ public class KeyDetector : MonoBehaviour
                     if (hitDown.collider.transform.position.y < transform.position.y)
                     {
                         if (distance <= badKeyRange)
-                            Debug.Log("Late Bad!");
+                        {
+                            // Debug.Log("Late Bad!");
+                            ComboManager.Instance.ResetCombo();
+                        }
                         else
-                            Debug.Log("Miss!");
-
+                        {
+                            // Debug.Log("Miss!");
+                            ComboManager.Instance.ResetCombo();
+                        }
                         Destroy(hitDown.collider.gameObject);
                     }
                 }
