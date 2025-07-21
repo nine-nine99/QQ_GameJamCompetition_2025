@@ -46,5 +46,6 @@ public class RunState_1001 : IState
     {
         // Logic for exiting the run state
         Debug.Log("Exiting Run State");
+        rb.velocity = Vector2.zero;
     }
 }

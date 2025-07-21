@@ -5,7 +5,7 @@ using UnityEngine;
 
 public static class EventHandler
 {
-   public static Action<string> SceneTransitionEvent; // 场景切换事件
+    public static Action<string> SceneTransitionEvent; // 场景切换事件
     public static void CallSceneTransitionEvent(string newSceneName)
     {
         SceneTransitionEvent?.Invoke(newSceneName);
@@ -49,55 +49,10 @@ public static class EventHandler
         AfterSceneLoadEvent?.Invoke(sceneName);
     }
 
-
-
-    public static Action<int, Vector3> CreaterNewSoldier;
-    public static void CallCreaterNewSoldier(int id, Vector3 pos)
+    // 当开始播放按钮被按下时的事件
+    public static Action StartBGMButtonPressedEvent;
+    public static void CallStartBGMButtonPressedEvent()
     {
-        CreaterNewSoldier?.Invoke(id, pos);
-    }
-
-    public static Action<int, Vector3> CreaterNewEnemy;
-    public static void CallCreaterNewEnemy(int id, Vector3 pos)
-    {
-        CreaterNewEnemy?.Invoke(id, pos);
-    }
-
-    public static Action<int, Vector3> CreaterNewItem;
-    public static void CallCreaterNewItem(int id, Vector3 pos)
-    {
-        CreaterNewItem?.Invoke(id, pos);
-    }
-
-    // 储存的硬币数量变化的事件
-    public static Action<int> CoinCountChange;
-    public static void CallCoinCountChange(int count)
-    {
-        CoinCountChange?.Invoke(count);
-    }
-
-    // 离开Bound边界
-    public static Action<Transform> LeaveBound;
-    public static void CallLeaveBound(Transform transform)
-    {
-        LeaveBound?.Invoke(transform);
-    }
-
-    public static Action<int, Vector3> CreaterNewMagicRain;
-    public static void CallCreaterNewMagicRain(int id, Vector3 pos)
-    {
-        CreaterNewMagicRain?.Invoke(id, pos);
-    }
-
-    public static Action OnLevelUp;
-    public static void CallOnLevelUp()
-    {
-        OnLevelUp?.Invoke();
-    }
-
-    public static Action<int> ClickSlot1002;
-    public static void CallClickSlot1002(int index)
-    {
-        ClickSlot1002?.Invoke(index);
+        StartBGMButtonPressedEvent?.Invoke();
     }
 }
