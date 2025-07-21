@@ -22,14 +22,12 @@ public class ComboManager : MonoBehaviour
     {
         combo++;
         UpdateComboDisplay();
-        // Debug.Log("Combo: " + combo);
     }
 
     public void ResetCombo()
     {
         combo = 0;
         UpdateComboDisplay();
-        // Debug.Log("Combo: " + combo);
     }
 
     void UpdateComboDisplay()
