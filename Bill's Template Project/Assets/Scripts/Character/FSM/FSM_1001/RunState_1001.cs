@@ -18,10 +18,9 @@ public class RunState_1001 : IState
 
     public void OnEnter()
     {
-        // Logic for entering the run state
-        Debug.Log("Entering Run State");
+        // Debug.Log("Entering Run State");
         this.Speed = 1.2f; // 初始运行速度
-
+        fsm.animator.SetBool("isMoving", true); // 设置动画状态为运行
     }
 
     public void OnUpdate()
@@ -37,15 +36,16 @@ public class RunState_1001 : IState
         {
             // 更新刚体的速度
             rb.velocity = direction * Speed;
-            
-            fsm.PlayWalkBob(); // 播放行走动画
+            fsm.RotateTowardsTarget(direction); // 旋转角色朝向目标
+            // fsm.PlayWalkBob(); // 播放行走动画
         }
     }
 
     public void OnExit()
     {
         // Logic for exiting the run state
-        Debug.Log("Exiting Run State");
+        // Debug.Log("Exiting Run State");
         rb.velocity = Vector2.zero;
+        fsm.animator.SetBool("isMoving", false); // 设置动画状态为非运行
     }
 }
