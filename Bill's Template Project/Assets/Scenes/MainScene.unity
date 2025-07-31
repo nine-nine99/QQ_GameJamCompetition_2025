@@ -328,17 +328,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainCharacter
       objectReference: {fileID: 0}
-    - target: {fileID: 1454628957776616848, guid: 82ba7d683aad7d141b117b7b18ecee4d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6147574549059522230, guid: 82ba7d683aad7d141b117b7b18ecee4d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2.25
       objectReference: {fileID: 0}
     - target: {fileID: 6147574549059522230, guid: 82ba7d683aad7d141b117b7b18ecee4d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.33
       objectReference: {fileID: 0}
     - target: {fileID: 6147574549059522230, guid: 82ba7d683aad7d141b117b7b18ecee4d, type: 3}
       propertyPath: m_LocalPosition.z

@@ -32,15 +32,15 @@ public class FSM_1000 : MonoBehaviour
         currentState.OnEnter();
     }
     // 旋转角色朝向目标
-    public virtual void RotateTowardsTarget(Vector2 direction)
+    public virtual void RotateTowardsTarget(Vector2 direction, bool leftRight = true)
     {
         if (direction.x > 0)
         {
-            bodySpriteTransform.GetComponent<SpriteRenderer>().flipX = false;
+            bodySpriteTransform.GetComponent<SpriteRenderer>().flipX = leftRight;
         }
         else if (direction.x < 0)
         {
-            bodySpriteTransform.GetComponent<SpriteRenderer>().flipX = true;
+            bodySpriteTransform.GetComponent<SpriteRenderer>().flipX = !leftRight;
         }
     }
     // 新增：上下跳动方法

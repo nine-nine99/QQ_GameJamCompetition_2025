@@ -5,7 +5,7 @@ using UnityEngine;
 public class FSM_1001 : FSM_1000
 {
     public Vector2 inputDirection => GetInputDirection2D();
-
+    public Animator animator => transform.GetChild(0).GetComponent<Animator>();
     public override void Start()
     {
         states.Add(State.Idle, new IdleState_1001(this));
