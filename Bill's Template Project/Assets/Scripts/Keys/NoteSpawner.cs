@@ -5,6 +5,7 @@ using UnityEngine;
 public class NoteSpawner : Singleton<NoteSpawner>
 {
     public GameObject notePrefab;
+    public GameObject noteHoldPrefab;
     public Transform[] spawnPoints;//move prefabs in NoteManager to check judgement line position
     // public int spawnInterval = 1;//just for test, delete later
     // private float timer = 0f;
@@ -21,13 +22,17 @@ public class NoteSpawner : Singleton<NoteSpawner>
     //     }
     // }
 
-    private void SpawnNote()
-    {
-        int laneNum = Random.Range(0, spawnPoints.Length);
+    // private void SpawnNote()
+    // {
+    //     int laneNum = Random.Range(0, spawnPoints.Length);
 
-        GameObject note = Instantiate(notePrefab, spawnPoints[laneNum].position, Quaternion.identity);
-        note.AddComponent<NoteMover>();
-    }
+    //     //测试：有50%的概率可以生成长按键/短按键
+    //     bool spawnHold = Random.value < 0.5f;
+    //     GameObject prefabToSpawn = spawnHold ? noteHoldPrefab : notePrefab;
+
+    //     GameObject note = Instantiate(prefabToSpawn, spawnPoints[laneNum].position, Quaternion.identity);
+    //     note.AddComponent<NoteMover>();
+    // }
 
     public void SpawnNote(SyllableDetail syllableDetail)
     {
@@ -42,6 +47,7 @@ public class NoteSpawner : Singleton<NoteSpawner>
 
         GameObject note = Instantiate(notePrefab, spawnPoints[laneNum].position, Quaternion.identity);
         note.AddComponent<NoteMover>();
+
         // 可以在这里设置音符的其他属性，比如持续时间等
         float duration = syllableDetail.duration;
         NoteMover noteMover = note.GetComponent<NoteMover>();

@@ -1605,6 +1605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notePrefab: {fileID: 5731541485693546953, guid: ca9285f5e24a0f64aa091f63df5cd969, type: 3}
+  noteHoldPrefab: {fileID: 6679058441256943150, guid: 56aaeb05b82be6e4eae39ba9922c7295, type: 3}
   spawnPoints:
   - {fileID: 494454682}
   - {fileID: 944598387}
@@ -1612,7 +1613,6 @@ MonoBehaviour:
   - {fileID: 389433885}
   - {fileID: 1463702992}
   - {fileID: 1558547721}
-  spawnInterval: 1
 --- !u!4 &1855086420
 Transform:
   m_ObjectHideFlags: 0
