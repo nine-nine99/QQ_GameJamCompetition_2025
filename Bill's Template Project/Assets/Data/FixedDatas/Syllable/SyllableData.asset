@@ -26,3 +26,7 @@ MonoBehaviour:
     positionIndex: 0
     duration: 0.5
     syllableType: 0
+  - arrivalTime: 4
+    positionIndex: 2
+    duration: 2
+    syllableType: 1

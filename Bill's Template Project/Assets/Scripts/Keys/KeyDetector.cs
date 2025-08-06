@@ -17,37 +17,75 @@ public class KeyDetector : MonoBehaviour
         if (Input.GetKeyDown(key))
         {
             bool hitSomething = false;
-            //向上检测
+
+            // 向上检测
             RaycastHit2D hitUp = Physics2D.Raycast(transform.position, Vector2.up, rayLength, LayerMask.GetMask("Note"));
             if (hitUp.collider != null)
             {
-                float distance = Mathf.Abs(hitUp.collider.transform.position.y - transform.position.y);
+                GameObject hitObj = hitUp.collider.gameObject;
 
-                if (distance <= perfectKeyRange)
+                if (hitObj.CompareTag("LongNoteHead"))
                 {
-                    Debug.Log("Perfect!");
-                    ComboManager.Instance.AddCombo();
-                }
-                else if (distance <= goodKeyRange)
-                {
-                    Debug.Log("Good!");
-                    ComboManager.Instance.AddCombo();
-                }
-                else if (distance <= badKeyRange)
-                {
-                    // Debug.Log("Bad!");
-                    ComboManager.Instance.ResetCombo();
+                    float distance = Mathf.Abs(hitObj.transform.position.y - transform.position.y);
+
+                    if (distance <= perfectKeyRange)
+                    {
+                        Debug.Log("Perfect Hold Start!");
+                        ComboManager.Instance.AddCombo();
+                    }
+                    else if (distance <= goodKeyRange)
+                    {
+                        Debug.Log("Good Hold Start!");
+                        ComboManager.Instance.AddCombo();
+                    }
+                    else if (distance <= badKeyRange)
+                    {
+                        Debug.Log("Bad Hold Start!");
+                        ComboManager.Instance.ResetCombo();
+                    }
+                    else
+                    {
+                        Debug.Log("Miss Hold Start!");
+                        ComboManager.Instance.ResetCombo();
+                        return;
+                    }
+
+                    HoldNoteController hold = hitObj.GetComponentInParent<HoldNoteController>();
+                    if (hold != null) hold.StartHolding();
+                    // Destroy(hitObj.transform.parent.gameObject);
+                    hitSomething = true;
                 }
                 else
                 {
-                    // Debug.Log("Miss!");
-                    ComboManager.Instance.ResetCombo();
-                }   
-                Destroy(hitUp.collider.gameObject);
-                hitSomething = true;
+                    float distance = Mathf.Abs(hitObj.transform.position.y - transform.position.y);
+
+                    if (distance <= perfectKeyRange)
+                    {
+                        Debug.Log("Perfect!");
+                        ComboManager.Instance.AddCombo();
+                    }
+                    else if (distance <= goodKeyRange)
+                    {
+                        Debug.Log("Good!");
+                        ComboManager.Instance.AddCombo();
+                    }
+                    else if (distance <= badKeyRange)
+                    {
+                        Debug.Log("Bad!");
+                        ComboManager.Instance.ResetCombo();
+                    }
+                    else
+                    {
+                        Debug.Log("Miss!");
+                        ComboManager.Instance.ResetCombo();
+                    }
+
+                    Destroy(hitObj);
+                    hitSomething = true;
+                }
             }
 
-            //向下检测
+            // 向下检测 Miss
             if (!hitSomething)
             {
                 RaycastHit2D hitDown = Physics2D.Raycast(transform.position, Vector2.down, rayLength, LayerMask.GetMask("Note"));
@@ -59,17 +97,52 @@ public class KeyDetector : MonoBehaviour
                     {
                         if (distance <= badKeyRange)
                         {
-                            // Debug.Log("Late Bad!");
+                            Debug.Log("Late Bad!");
                             ComboManager.Instance.ResetCombo();
                         }
                         else
                         {
-                            // Debug.Log("Miss!");
+                            Debug.Log("Miss!");
                             ComboManager.Instance.ResetCombo();
                         }
                         Destroy(hitDown.collider.gameObject);
                     }
                 }
+            }
+        }
+
+        // 松开检测长按尾部
+        if (Input.GetKeyUp(key))
+        {
+            RaycastHit2D hitUpRelease = Physics2D.Raycast(transform.position, Vector2.up, rayLength, LayerMask.GetMask("Note"));
+
+            if (hitUpRelease.collider != null && hitUpRelease.collider.CompareTag("LongNoteTail"))
+            {
+                GameObject hitObj = hitUpRelease.collider.gameObject;
+                float distance = Mathf.Abs(hitObj.transform.position.y - transform.position.y);
+
+                if (distance <= perfectKeyRange)
+                {
+                    Debug.Log("Perfect Hold End!");
+                    ComboManager.Instance.AddCombo();
+                }
+                else if (distance <= goodKeyRange)
+                {
+                    Debug.Log("Good Hold End!");
+                    ComboManager.Instance.AddCombo();
+                }
+                else if (distance <= badKeyRange)
+                {
+                    Debug.Log("Bad Hold End!");
+                    ComboManager.Instance.ResetCombo();
+                }
+                else
+                {
+                    Debug.Log("Miss Hold End!");
+                    ComboManager.Instance.ResetCombo();
+                }
+
+                Destroy(hitObj.transform.parent.gameObject);
             }
         }
     }
