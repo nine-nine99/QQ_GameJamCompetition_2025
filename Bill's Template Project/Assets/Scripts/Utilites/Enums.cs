@@ -22,5 +22,5 @@ public enum State
 public enum SyllableType
 {
     Normal, //WORKFLOW: 普通音节. 要是有音节记得在这里添加
-    Hold,
+    Hold//长按音节
 }
