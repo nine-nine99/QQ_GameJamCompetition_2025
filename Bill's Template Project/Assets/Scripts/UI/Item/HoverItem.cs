@@ -1,33 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HoverItem : MonoBehaviour
 {
     private Vector3 originalScale;
     public float scaleMultiplier = 1.4f;
-    // private SpriteRenderer getColor;
-    // private Color originalColor;
-    // public Color highlightColor = new Color(0.9f, 0.9f, 0.9f, 1f);
+
+    public GameObject blackOverlay;
+    // public Sprite zoomSprite;
+    public Image zoomedItem;
+    public TextMeshProUGUI descriptionText;
 
     void Start()
     {
-        // getColor = GetComponent<SpriteRenderer>();
-        // originalColor = getColor.color;
         originalScale = transform.localScale;
-
-        // getColor.sortingOrder = 10;
     }
 
     void OnMouseEnter()
     {
-        // getColor.color = highlightColor;
         transform.localScale = originalScale * scaleMultiplier;
     }
 
     void OnMouseExit()
     {
-        // getColor.color = originalColor;
         transform.localScale = originalScale;
+    }
+
+    void OnMouseDown()
+    {
+        blackOverlay.SetActive(true);
+        zoomedItem.gameObject.SetActive(true);
+        descriptionText.gameObject.SetActive(true);
+    }
+
+    public void CloseOverlay()
+    {
+        blackOverlay.SetActive(false);
+        zoomedItem.gameObject.SetActive(false);
+        descriptionText.gameObject.SetActive(false);
     }
 }
