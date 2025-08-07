@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class CursorManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Texture2D cursorTexture;
+    public Vector2 hotspot = Vector2.zero;
+    public CursorMode cursorMode = CursorMode.Auto;
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Cursor.SetCursor(cursorTexture, hotspot, cursorMode);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }
