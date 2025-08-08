@@ -14,23 +14,21 @@ public class InteractableItemWindow : BaseWindowWrapper<InteractableItemWindow>
     protected override void InitCtrl()
     {
         btnClose = transform.Find("btnClose")?.GetComponent<Button>();
-        if (btnClose == null) Debug.LogError("btnClose 未找到");
-
         itemImage = transform.Find("itemImage")?.GetComponent<Image>();
-        if (itemImage == null) Debug.LogError("itemImage 未找到");
-
         itemText = transform.Find("itemText")?.GetComponent<TextMeshProUGUI>();
-        if (itemText == null) Debug.LogError("itemText 未找到");
-    }
-
-    protected override void OnPreOpen()
-    {
-
     }
 
     protected override void OnOpen()
     {
+        StartCoroutine(EnableCloseAfterRelease());
+    }
 
+    IEnumerator EnableCloseAfterRelease()
+    {
+        btnClose.interactable = false;
+        yield return new WaitUntil(() => !Input.GetMouseButton(0));
+        yield return null;
+        btnClose.interactable = true;
     }
 
     public void SetContent(Sprite sprite, string text, float width, float height)
@@ -50,18 +48,9 @@ public class InteractableItemWindow : BaseWindowWrapper<InteractableItemWindow>
     }
 
 
-    protected override void InitMsg()
-    {
-        btnClose.onClick.AddListener(OnCloseClick);
-    }
+    protected override void InitMsg() => btnClose.onClick.AddListener(OnCloseClick);
+    protected override void ClearMsg() => btnClose.onClick.RemoveListener(OnCloseClick);
 
-    protected override void ClearMsg()
-    {
-        btnClose.onClick.RemoveListener(OnCloseClick);
-    }
+    void OnCloseClick() => WindowMgr.Instance.CloseWindow<InteractableItemWindow>();
 
-    private void OnCloseClick()
-    {
-        WindowMgr.Instance.CloseWindow<InteractableItemWindow>();
-    }
 }
