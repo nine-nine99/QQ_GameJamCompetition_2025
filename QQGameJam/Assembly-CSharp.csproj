@@ -121,6 +121,7 @@
     <Compile Include="Assets\Scripts\AAA_NotHW\Character\FSM\BaseFSM\IdleState_Base.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Keys\KeyDetector.cs" />
     <Compile Include="Assets\Scripts\GamePlay\UI\PauseWindow.cs" />
+    <Compile Include="Assets\Scripts\AAA_NotHW\Character\CursorManager.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\AudioManager\Main\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Utils\Enums.cs" />
     <Compile Include="Assets\Scripts\GamePlay\RefData\RefLanguage.cs" />
@@ -159,6 +160,7 @@
     <None Include="Assets\Resources\Refdata\数据表目录.txt" />
     <None Include="Assets\3rdPlugin\Demigiant\DOTween\DOTween46.xml" />
     <None Include="Assets\3rdPlugin\Demigiant\DOTween\DOTween50.xml" />
+    <None Include="Assets\TextMesh Pro\Glyph Report.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\Resources\Sound\音乐音效目录.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
