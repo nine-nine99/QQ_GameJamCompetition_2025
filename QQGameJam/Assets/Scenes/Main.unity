@@ -722,7 +722,7 @@ PrefabInstance:
       objectReference: {fileID: 1253618290}
     - target: {fileID: 1803873380973359208, guid: 42ae25ef2951f1342a3988a21e2d27b0, type: 3}
       propertyPath: descriptionText
-      value: "\u5F85\u586B\u5165..."
+      value: "\u770B\u8D77\u6765\u6709\u4E9B\u5E74\u4EE3\u4E86\uFF0C\u62FF\u8D77\u6765\u751A\u81F3\u684C\u4E0A\u80FD\u6709\u4E00\u4E2A\u5751\uFF0C\u4F46\u662F\u97F3\u8272\u8FD8\u662F\u5341\u6210\u5341\u7684\u597D"
       objectReference: {fileID: 0}
     - target: {fileID: 6741779104577207981, guid: 42ae25ef2951f1342a3988a21e2d27b0, type: 3}
       propertyPath: m_Size.x
@@ -1051,7 +1051,7 @@ PrefabInstance:
       objectReference: {fileID: 1690876693}
     - target: {fileID: 1803873380973359208, guid: 42ae25ef2951f1342a3988a21e2d27b0, type: 3}
       propertyPath: descriptionText
-      value: "\u5F85\u586B\u5165..."
+      value: "DEFINITE,BCK,WENN,EnSh\u3002\u3002\u3002\u4E00\u5927\u5806\u4E13\u8F91\u88AB\u6563\u4E71\u5730\u6254\u5728\u5730\u4E0A\uFF0C\u5C0F\u5077\u5E76\u6CA1\u6709\u770B\u4E0A\u8FD9\u4E9B\u8001\u677F\u7684\u73CD\u85CF\u3002"
       objectReference: {fileID: 0}
     - target: {fileID: 6741779104577207981, guid: 42ae25ef2951f1342a3988a21e2d27b0, type: 3}
       propertyPath: m_Size.x
@@ -1325,7 +1325,7 @@ PrefabInstance:
       objectReference: {fileID: 1836562310}
     - target: {fileID: 1803873380973359208, guid: 42ae25ef2951f1342a3988a21e2d27b0, type: 3}
       propertyPath: descriptionText
-      value: "\u5F85\u586B\u5165..."
+      value: "\u5475\u3002\u4E00\u4E2A\u72C2\u5984\u7684\u5C0F\u5973\u5B69\uFF0C\u5C06\u5B83\u6302\u5728\u5367\u5BA4\u91CC\u6BCF\u5929\u51DD\u89C6\u7740\uFF0C\u5984\u60F3\u81EA\u5DF1\u6210\u4E3A\u4E0B\u4E00\u4E2A\u7535\u5B50\u754C\u7684\u5929\u624D\u3002\u5F53\u7136\uFF0C\u6D77\u62A5\u4E5F\u89C9\u5F97\u81EA\u5DF1\u662F\u4E2A\u5929\u624D\u3002"
       objectReference: {fileID: 0}
     - target: {fileID: 6741779104577207981, guid: 42ae25ef2951f1342a3988a21e2d27b0, type: 3}
       propertyPath: m_Size.x
@@ -1658,7 +1658,7 @@ PrefabInstance:
       objectReference: {fileID: 1953215190}
     - target: {fileID: 1803873380973359208, guid: 42ae25ef2951f1342a3988a21e2d27b0, type: 3}
       propertyPath: descriptionText
-      value: "\u5F85\u586B\u5165..."
+      value: "\u4E00\u4E2A\u4E50\u961F\u7684\u4E13\u8F91\uFF0C\u4F46\u4E3A\u4EC0\u4E48\u662F\u773C\u73E0\u5B50\u505Alogo\u5462\uFF1F"
       objectReference: {fileID: 0}
     - target: {fileID: 6741779104577207981, guid: 42ae25ef2951f1342a3988a21e2d27b0, type: 3}
       propertyPath: m_Size.x
@@ -2026,7 +2026,7 @@ PrefabInstance:
       objectReference: {fileID: 954786431}
     - target: {fileID: 1803873380973359208, guid: 42ae25ef2951f1342a3988a21e2d27b0, type: 3}
       propertyPath: descriptionText
-      value: "\u5F85\u586B\u5165..."
+      value: "\u8001\u677F\u6700\u559C\u6B22\u7684\u4E00\u5F20CD\uFF0C\u603B\u662F\u628A\u4ED6\u653E\u5728\u6700\u660E\u663E\u7684\u4F4D\u7F6E\u3002 "
       objectReference: {fileID: 0}
     - target: {fileID: 6741779104577207981, guid: 42ae25ef2951f1342a3988a21e2d27b0, type: 3}
       propertyPath: m_Size.x
@@ -2180,7 +2180,7 @@ PrefabInstance:
       objectReference: {fileID: 642380989}
     - target: {fileID: 1803873380973359208, guid: 42ae25ef2951f1342a3988a21e2d27b0, type: 3}
       propertyPath: descriptionText
-      value: "\u5F85\u586B\u5165..."
+      value: "\u8FD9\u662F\u6211\u6700\u559C\u6B22\u7684CD\u4E4B\u4E00"
       objectReference: {fileID: 0}
     - target: {fileID: 6741779104577207981, guid: 42ae25ef2951f1342a3988a21e2d27b0, type: 3}
       propertyPath: m_Size.x
@@ -2820,7 +2820,7 @@ PrefabInstance:
       objectReference: {fileID: 1795800085}
     - target: {fileID: 1803873380973359208, guid: 42ae25ef2951f1342a3988a21e2d27b0, type: 3}
       propertyPath: descriptionText
-      value: "\u5F85\u586B\u5165..."
+      value: "\u4E0A\u5468\u521A\u53BB\u73B0\u573A\u9886\u5230\u7684\uFF0C\u6CA1\u6709\u5C0F\u5077\u770B\u4E0A\u7684\u5E78\u5B58\u8005"
       objectReference: {fileID: 0}
     - target: {fileID: 6741779104577207981, guid: 42ae25ef2951f1342a3988a21e2d27b0, type: 3}
       propertyPath: m_Size.x
