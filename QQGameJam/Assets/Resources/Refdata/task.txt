@@ -1,0 +1,8 @@
+﻿任务ID	任务类型	解锁条件
+TaskId	TaskType	Condition
+100	Nothing	1
+200	SignInDay	2
+300	GradeNum	3
+400	BestScore	4
+500	GameTimes	5
+600	ReliveTimes	6

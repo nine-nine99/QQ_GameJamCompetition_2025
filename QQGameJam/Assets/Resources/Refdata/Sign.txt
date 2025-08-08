@@ -1,0 +1,9 @@
+﻿天数	奖励类型	奖励数量
+Day	RewardType	RewardNum
+1	Coin	100
+2	Coin	200
+3	Coin	300
+4	Coin	400
+5	Coin	500
+6	Coin	600
+7	Coin	700

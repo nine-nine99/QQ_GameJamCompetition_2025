@@ -1,0 +1,3 @@
+﻿Key	中文	德语	西班牙语	法语	印度尼西亚	意大利	日本	韩国	葡萄牙	俄语	泰语	土耳其	越南	繁体
+Key	CN	DE	ES	FR	ID	IT	JA	KO	PT	RU	TH	TR	VI	ZH_TW
+Language	语言	Sprache	Idioma	Langue	Bahasa	Lingua	言語	언어	Idioma	Язык	ภาษา	Tesisat	Ngôn ngữ	語言
