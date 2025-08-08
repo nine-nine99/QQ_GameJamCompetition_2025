@@ -39,11 +39,7 @@ public class InteractableItemWindow : BaseWindowWrapper<InteractableItemWindow>
         {
             itemImage.sprite = sprite;
             var rt = itemImage.rectTransform;
-            rt.pivot = new Vector2(0.5f, 0.5f);
-            rt.anchoredPosition = new Vector2(-1416f, -1064f);
-            rt.localScale = new Vector3(7f, 7f, 7f);
-            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 887.46f);
-            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 500f);
+            rt.localScale = new Vector3(0.5f, 0.5f, 1f);
         }
 
         if (itemText != null)
