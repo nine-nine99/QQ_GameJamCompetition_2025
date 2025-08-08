@@ -33,13 +33,13 @@ public class InteractableItemWindow : BaseWindowWrapper<InteractableItemWindow>
 
     }
 
-    public void SetContent(Sprite sprite, string text)
+    public void SetContent(Sprite sprite, string text, float width, float height)
     {
-        if (itemImage != null)
+        if (itemImage != null && (width > 0 && height > 0))
         {
             itemImage.sprite = sprite;
             var rt = itemImage.rectTransform;
-            rt.localScale = new Vector3(0.5f, 0.5f, 1f);
+            rt.localScale = new Vector3(width, height, 1f);
         }
 
         if (itemText != null)

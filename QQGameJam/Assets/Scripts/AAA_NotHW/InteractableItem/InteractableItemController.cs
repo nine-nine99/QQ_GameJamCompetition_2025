@@ -14,6 +14,10 @@ public class InteractableItemController : MonoBehaviour
     public GameObject self;
     public string descriptionText = "待填入...";
 
+    //图片点击后的尺寸，可以单独设置
+    public float width;
+    public float height;
+
     void Start()
     {
     }
@@ -38,7 +42,9 @@ public class InteractableItemController : MonoBehaviour
         WindowMgr.Instance.OpenWindow<InteractableItemWindow>();
         InteractableItemWindow.Instance.SetContent(
             spriteRenderer.sprite,
-            descriptionText
+            descriptionText,
+            width,
+            height
         );
     }
 
