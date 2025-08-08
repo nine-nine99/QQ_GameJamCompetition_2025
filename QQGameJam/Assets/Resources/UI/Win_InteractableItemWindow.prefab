@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasOpen: 0
+  customFont: {fileID: 11400000, guid: aa83d0353217f0849bda388681457c75, type: 2}
 --- !u!1 &4100397467627282154
 GameObject:
   m_ObjectHideFlags: 0

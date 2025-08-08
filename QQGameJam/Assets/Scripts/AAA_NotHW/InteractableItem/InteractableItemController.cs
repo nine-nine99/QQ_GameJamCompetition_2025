@@ -1,40 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class InteractableItemController : MonoBehaviour
 {
-    private Transform spriteTransform;
+    private Vector3 originalScale;
+    public float scaleMultiplier = 1.4f;
 
-    private void Start()
+    // public GameObject blackOverlay;
+    public GameObject zoomedItem;
+    public GameObject self;
+    public string descriptionText = "待填入...";
+
+    void Start()
     {
-        spriteTransform = transform;
     }
 
-    // 鼠标进入时调用
-    private void OnMouseEnter()
+    void OnMouseEnter()
     {
-        // 添加高亮效果，比如放大
-        spriteTransform.localScale = Vector3.one * 1.1f;
+        self.SetActive(false);
+        zoomedItem.SetActive(true);
     }
 
-    // 鼠标离开时调用
-    private void OnMouseExit()
+    void OnMouseExit()
     {
-        // 恢复原始大小
-        spriteTransform.localScale = Vector3.one;
-    }
-
-    // 鼠标悬停时持续调用
-    private void OnMouseOver()
-    {
-        // 在这里添加持续的悬停效果
+        self.SetActive(true);
+        zoomedItem.SetActive(false);
     }
 
     // 鼠标点击时调用
     private void OnMouseDown()
     {
-        // 添加点击处理逻辑
+        var spriteRenderer = self.GetComponent<SpriteRenderer>();
+
         WindowMgr.Instance.OpenWindow<InteractableItemWindow>();
+        InteractableItemWindow.Instance.SetContent(
+            spriteRenderer.sprite,
+            descriptionText
+        );
     }
+
 }
