@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\GamePlay\Battle\BattleMgr.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Character\FSM\BaseFSM\BaseFSM.cs" />
     <Compile Include="Assets\Scripts\Engine\UI\WindowInfo.cs" />
+    <Compile Include="Assets\Scripts\AAA_NotHW\UI\TimeLineControl.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\SyllableManager\Main\SyllableManager.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Keys\NoteMover.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Other\ToolMgr.cs" />

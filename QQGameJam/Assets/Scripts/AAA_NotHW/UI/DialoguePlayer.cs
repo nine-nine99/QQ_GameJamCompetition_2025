@@ -1,11 +1,13 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Playables;
 
 public class DialoguePlayer : MonoBehaviour
 {
     public TextMeshProUGUI textUI;
     [TextArea] public string[] lines;
+    public PlayableDirector director;
     public float charInterval = 0.03f;
 
     int idx = 0;
@@ -69,5 +71,6 @@ public class DialoguePlayer : MonoBehaviour
     void EndDialogue()
     {
         gameObject.SetActive(false);
+        if (director) director.Play();
     }
 }
