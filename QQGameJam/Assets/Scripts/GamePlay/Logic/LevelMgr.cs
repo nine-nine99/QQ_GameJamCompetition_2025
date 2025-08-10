@@ -8,6 +8,7 @@ public class LevelMgr : Singleton<LevelMgr>
 {
     // TODO:这里未来会优化数据获取的方式
     private string levelSencePrefabPath = "Prefab/LevelScene/LevelScene0";
+    private string realWorldScene = "Prefab/LevelScene/RealWorldScene";
     private int currentLevel;
     public int CurrentLevel
     {
@@ -66,13 +67,14 @@ public class LevelMgr : Singleton<LevelMgr>
 
         // 这里可以添加加载关卡的具体逻辑，比如从资源中加载关卡数据等
         GameObject levelPrefab = Resources.Load<GameObject>(levelSencePrefabPath);
-        if (levelPrefab != null)
+        GameObject realWorldPrefab = Resources.Load<GameObject>(realWorldScene);
+        if (realWorldPrefab != null)
         {
-            GameObject levelInstance = UnityEngine.Object.Instantiate(levelPrefab);
+            GameObject levelInstance = UnityEngine.Object.Instantiate(realWorldPrefab);
             levelInstance.name = "Level_" + level;
             curLevelObj = levelInstance;
             curLevelObj.transform.GetChild(0).gameObject.SetActive(true); // 激活关卡的第一个子对象
-            curLevelObj.transform.GetChild(1).gameObject.SetActive(false); // 第二个子对象是隐藏的
+            // curLevelObj.transform.GetChild(1).gameObject.SetActive(false); // 第二个子对象是隐藏的
         }
         else
         {
