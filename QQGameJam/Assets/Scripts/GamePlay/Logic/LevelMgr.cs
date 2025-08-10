@@ -3,12 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class LevelMgr : Singleton<LevelMgr>
 {
     // TODO:这里未来会优化数据获取的方式
+    public PlayableDirector introDirector;
     private string levelSencePrefabPath = "Prefab/LevelScene/LevelScene0";
     private string realWorldScene = "Prefab/LevelScene/RealWorldScene";
+    private string introTimelinePrefabPath = "Prefab/Timeline/IntroTimeline";
     private int currentLevel;
     public int CurrentLevel
     {
@@ -83,3 +86,5 @@ public class LevelMgr : Singleton<LevelMgr>
     }
 
 }
+
+
