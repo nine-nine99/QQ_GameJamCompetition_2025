@@ -88,6 +88,7 @@
     <Compile Include="Assets\Scripts\GamePlay\Proxy\ItemInfoView.cs" />
     <Compile Include="Assets\Scripts\Engine\UI\WindowMgr.cs" />
     <Compile Include="Assets\Scripts\GamePlay\UI\ShopWindow.cs" />
+    <Compile Include="Assets\Scripts\AAA_NotHW\UI\DialoguePlayer.cs" />
     <Compile Include="Assets\Scripts\Engine\Base\Enum.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Logic\GradeMgr.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Other\TimeMgr.cs" />
