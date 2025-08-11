@@ -11,6 +11,10 @@ public class PlayerMgr : Singleton<PlayerMgr>
     // 玩家预制体路径 Path：Prefab/Character/MainCharacter
     private string playerPrefabPath = "Prefab/Character/MainCharacter";
     public GameObject curPlayerObj;
+
+    //玩家在real world y轴的走动范围
+    public float minY = -1.5f;
+    public float maxY = -1f;
     //初始化
     public void Init()
     {
@@ -39,8 +43,8 @@ public class PlayerMgr : Singleton<PlayerMgr>
     public void StartBattle()
     {
         Send.SendMsg(SendType.BattleStart);
-        PlacePlayer(new Vector2(0, -0.7f)); // 默认位置
-        Debug.Log("战斗开始，玩家已放置在默认位置 (0, -0.7)");
+        PlacePlayer(new Vector2(0, -1.5f)); // 默认位置
+        Debug.Log("战斗开始，玩家已放置在默认位置 (0, -1.5)");
     }
 
     //Update函数，根据需求实现，需要在Launch.Update()中调用
@@ -56,6 +60,26 @@ public class PlayerMgr : Singleton<PlayerMgr>
                 BattleMgr.Instance.StartMusicBattle(); // 开始音乐战斗
             }
         }
+
+        // 限制玩家Y轴位置
+        // TODO: 玩家的y轴达到maxY以后，就不能往下了。待解决
+        if (curPlayerObj != null)
+        {
+            Vector3 pos = curPlayerObj.transform.position;
+            pos.y = Mathf.Clamp(pos.y, minY, maxY);
+            curPlayerObj.transform.position = pos;
+
+            var rb = curPlayerObj.GetComponent<Rigidbody2D>();
+            if (rb)
+            {
+                // Debug.Log("you reach here");
+                if (rb.position.y >= maxY && rb.velocity.y > 0f)
+                    rb.velocity = new Vector2(rb.velocity.x, 0f);
+                if (rb.position.y <= minY && rb.velocity.y < 0f)
+                    rb.velocity = new Vector2(rb.velocity.x, 0f);
+            }
+        }
+
     }
 
     public void PlacePlayer(Vector2 position)
