@@ -25,7 +25,7 @@ public class SyllableManager : SingletonMonoBehavior<SyllableManager>
     public void OnMusicStart()
     {
         // 在这里处理音节的播放
-        if (syllableData == null || syllableData.syllableDetails == null || syllableData.syllableDetails.Count == 0)
+        if (syllableData == null || syllableData.datas == null || syllableData.datas.Count == 0)
         {
             return;
         }
@@ -33,14 +33,14 @@ public class SyllableManager : SingletonMonoBehavior<SyllableManager>
     }
     public void SongNodeStartIni()
     {
-        if (index >= syllableData.syllableDetails.Count)
+        if (index >= syllableData.datas.Count)
         {
             isPlaying = false; // 如果索引超出范围，退出循环
             return;
         }
         if (currentDetail == null)
         {
-            currentDetail = syllableData.syllableDetails[index];
+            currentDetail = syllableData.datas[index];
             if (currentDetail == null)
             {
                 isPlaying = false;

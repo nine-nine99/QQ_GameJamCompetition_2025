@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d9c63621611d6848a90f612a18793f7, type: 3}
+  m_Name: EnemySO
+  m_EditorClassIdentifier: 
+  data:
+  - ID: 1000
+    Name: "\u53F2\u83B1\u59C6"
+    Health: 1
+    Attack: 1
+  - ID: 1001
+    Name: "\u50F5\u5C38"
+    Health: 10
+    Attack: 10
+  - ID: 1002
+    Name: "\u9AB7\u9AC5"
+    Health: 5
+    Attack: 10
