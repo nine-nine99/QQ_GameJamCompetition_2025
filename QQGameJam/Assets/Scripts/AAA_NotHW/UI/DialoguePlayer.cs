@@ -20,6 +20,11 @@ public class DialoguePlayer : MonoBehaviour
     Coroutine co;
     int currentTotalChars = 0;
 
+    //animator
+    public Animator animA;                 // 旧动画所在对象
+    public Animator animB;                 // 新动画所在对象
+    [SerializeField] public int changeAnimationInt;//在第几句话打断，从旧动画换新动画,数字-1
+
     void Start()
     {
         if (!textUI || lines == null || lines.Length == 0) return;
@@ -58,6 +63,12 @@ public class DialoguePlayer : MonoBehaviour
             nameUI.text = spk;
             nameUI.color = string.Equals(spk, "melody", System.StringComparison.OrdinalIgnoreCase)
                            ? (Color)PINK : Color.black;
+        }
+
+        if (idx == changeAnimationInt)
+        {
+            if (animA) animA.gameObject.SetActive(false);
+            if (animA) animB.gameObject.SetActive(true);
         }
 
         if (co != null) StopCoroutine(co);
