@@ -50,6 +50,7 @@ public class DialoguePlayer : MonoBehaviour
         }
 
         idx++;
+        Debug.Log(idx + " " + lines.Length);
         if (idx < lines.Length) PlayCurrent();
         else EndDialogue();
     }
@@ -95,7 +96,8 @@ public class DialoguePlayer : MonoBehaviour
 
     void EndDialogue()
     {
-        gameObject.SetActive(false);
-        if (director) director.Play();
+        Debug.Log(transform.parent.gameObject);
+        transform.parent.gameObject.SetActive(false);
+        // if (director) director.Play();
     }
 }

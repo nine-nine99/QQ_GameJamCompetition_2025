@@ -31,6 +31,7 @@ public class BattleMgr : Singleton<BattleMgr>
 
     public void StartBattle()
     {
+        DialogueMgr.Instance.OpenDialogue(0);
         PlayerMgr.Instance.StartBattle();
         state = BattleState.Game;
     }

@@ -105,9 +105,10 @@ public class LevelMgr : Singleton<LevelMgr>
     {
         BattleMgr.Instance.state = BattleState.Game;
 
+        ObjectPool.Instance.Recycle(curLevelObj.gameObject); // 销毁当前关卡对象
         ObjectPool.Instance.Recycle(curMusicBattleObj);
         BattleWindow.Instance.ShowScenePanel();
-        PlayerMgr.Instance.PlacePlayer(new Vector2(0, -1.5f));
+        // PlayerMgr.Instance.PlacePlayer(new Vector2(0, -1.5f));
     }
 }
 
