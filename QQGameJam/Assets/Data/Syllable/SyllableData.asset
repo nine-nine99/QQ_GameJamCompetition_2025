@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628428b41a16b2545a3aff8819f24adc, type: 3}
   m_Name: SyllableData
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: 90cb451a61ce49f4ca476e0cde5655e1, type: 3}
+  audioClip: {fileID: 8300000, guid: 91ff7f18208235d4faca80fb3454328a, type: 3}
   datas:
   - index: 1
     arrivalTime: 1

@@ -150,6 +150,7 @@
     <Compile Include="Assets\Scripts\AAA_NotHW\Keys\NoteSpawner.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Logic\SignMgr.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Manager\AudioManager\Channels\BGM\BGMListener.cs" />
+    <Compile Include="Assets\Scripts\AAA_NotHW\Level\Level.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

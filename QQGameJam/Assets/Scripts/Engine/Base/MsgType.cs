@@ -31,5 +31,6 @@ public enum SendType
     BattleStart,
     MenuSlotClick,
     LevelChange,
+    MusicBattleEnd,
 }
 

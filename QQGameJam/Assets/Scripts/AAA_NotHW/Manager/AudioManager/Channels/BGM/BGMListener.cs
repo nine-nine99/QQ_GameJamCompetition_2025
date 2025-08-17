@@ -7,10 +7,10 @@ public class BGMListener : SingletonMonoBehavior<BGMListener>
     private AudioSource audioSource => transform.GetComponent<AudioSource>();
     void Update()
     {
-        if (audioSource.isPlaying)
+        if (IsFinished())
         {
-            // 输出当前播放时间和音频总长度
-            // Debug.Log($"Current Time: {audioSource.time} / Total Length: {audioSource.clip.length}");
+            Debug.Log("is Finish");
+            Send.SendMsg(SendType.MusicBattleEnd);
         }
     }
     // 获取当前播放时间（秒）

@@ -8,8 +8,8 @@ public class RunState_MainCharacter : IState
     private float Speed; // 运行速度
     private Rigidbody2D rb;
     private Vector2 direction => fsm.inputDirection.normalized;
-    private float maxY = -0.2f; // 最大 Y 值
-    private float minY = -1.0f; // 最小 Y 值
+    private float maxY = -1f; // 最大 Y 值
+    private float minY = -1.8f; // 最小 Y 值
 
     public RunState_MainCharacter(MainCharacterFSM fsm)
     {
@@ -20,7 +20,7 @@ public class RunState_MainCharacter : IState
     public void OnEnter()
     {
         // Debug.Log("Entering Run State");
-        this.Speed = 1.2f; // 初始运行速度
+        this.Speed = 2.2f; // 初始运行速度
         if (fsm.animator == null)
         {
             Debug.LogError("Animator is not assigned in RunState_MainCharacter");
@@ -56,7 +56,6 @@ public class RunState_MainCharacter : IState
             // 更新刚体的速度
             rb.velocity = curDirection * Speed;
             fsm.RotateTowardsTarget(direction, false); // 旋转角色朝向目标
-            // fsm.PlayWalkBob(); // 播放行走动画
         }
     }
 

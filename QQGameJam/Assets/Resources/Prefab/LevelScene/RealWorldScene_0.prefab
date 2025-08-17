@@ -1740,6 +1740,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &6361666758770961598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8866543361455400833}
+  m_Layer: 0
+  m_Name: EnemySpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8866543361455400833
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6361666758770961598}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8.23, y: -0.11, z: -0.21505935}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 944653278417366304}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6912313788034279279
 GameObject:
   m_ObjectHideFlags: 0
@@ -1906,8 +1937,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 944653278417366304}
+  - component: {fileID: 5688673280390861625}
   m_Layer: 0
-  m_Name: RealWorldScene
+  m_Name: RealWorldScene_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1929,8 +1961,23 @@ Transform:
   - {fileID: 1324920811821562655}
   - {fileID: 9123280807353416598}
   - {fileID: 1505512443931918345}
+  - {fileID: 8866543361455400833}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5688673280390861625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6977546677116359426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c27b49f286adac44a750ad7768f9b34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemySpawnTransform: {fileID: 8866543361455400833}
+  curCharacter: {fileID: 0}
 --- !u!1 &7126773659567440201
 GameObject:
   m_ObjectHideFlags: 0

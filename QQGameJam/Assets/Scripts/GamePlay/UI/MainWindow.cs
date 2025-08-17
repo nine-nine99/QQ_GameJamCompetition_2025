@@ -126,8 +126,14 @@ public class MenuSlotView
 
     private void OnClick()
     {
-        // Debug.Log($"Slot {slotIndex} clicked");
-        Send.SendMsg(SendType.MenuSlotClick, slotIndex);
+        OnMenuSlotClick();
+    }
+    private void OnMenuSlotClick()
+    {
+        // 根据槽索引执行相应的逻辑
+        LevelMgr.Instance.CurrentLevel = slotIndex; // 假设槽索引对应关卡
+
+        GameStateMgr.Instance.SwitchState(GameState.Battle);
     }
 }
 
