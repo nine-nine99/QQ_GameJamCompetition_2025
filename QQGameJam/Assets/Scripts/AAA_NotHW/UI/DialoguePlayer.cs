@@ -6,9 +6,14 @@ using UnityEngine.Playables;
 public class DialoguePlayer : MonoBehaviour
 {
     public TextMeshProUGUI textUI;
+    public TextMeshProUGUI nameUI;
+    public string[] speakers; //说话的人的text
     [TextArea] public string[] lines;
     public PlayableDirector director;
     public float charInterval = 0.03f;
+
+    //颜色
+    static readonly Color32 PINK = new Color32(255, 105, 180, 255);
 
     int idx = 0;
     bool typing = false;
@@ -46,6 +51,15 @@ public class DialoguePlayer : MonoBehaviour
 
     void PlayCurrent()
     {
+        //如果是melody说话，变粉色。
+        string spk = (speakers != null && idx < speakers.Length) ? speakers[idx] : "";
+        if (nameUI)
+        {
+            nameUI.text = spk;
+            nameUI.color = string.Equals(spk, "melody", System.StringComparison.OrdinalIgnoreCase)
+                           ? (Color)PINK : Color.black;
+        }
+
         if (co != null) StopCoroutine(co);
         co = StartCoroutine(TypeLine(lines[idx]));
     }
