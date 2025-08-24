@@ -28,9 +28,13 @@ public enum SendType
     TaskValueChange,
     LangChange,
     // 后来添加的消息类型
-    BattleStart,
     MenuSlotClick,
     LevelChange,
     MusicBattleEnd,
+    Into_InsideWorld,
+    Into_MusicBattle,
+    Into_Conversation,
+    Over_Conversation,
+    HPChange
 }
 

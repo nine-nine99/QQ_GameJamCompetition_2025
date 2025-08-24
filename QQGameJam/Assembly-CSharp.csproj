@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\GamePlay\UI\InteractableItemWindow.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Manager\DialogueMgr\Main\DialogueMgr.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Logic\LevelMgr.cs" />
+    <Compile Include="Assets\Scripts\AAA_NotHW\Part\Part.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Other\GameStateMgr.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Battle\BattleMgr.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Character\FSM\BaseFSM\BaseFSM.cs" />
@@ -82,11 +83,14 @@
     <Compile Include="Assets\Scripts\AAA_NotHW\Manager\AudioManager\Data\AudioData_SO.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\UI\TimeLineControl.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Keys\NoteMover.cs" />
+    <Compile Include="Assets\Scripts\AAA_NotHW\UI\SettingControl.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Other\ToolMgr.cs" />
     <Compile Include="Assets\Scripts\Engine\UI\UIRootTwoD.cs" />
     <Compile Include="Assets\Scripts\Engine\Base\Singleton.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Logic\ScoreMgr.cs" />
     <Compile Include="Assets\3rdPlugin\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
+    <Compile Include="Assets\Scripts\AAA_NotHW\Battle\HPBarControl.cs" />
+    <Compile Include="Assets\Scripts\AAA_NotHW\Part\Part_Real.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Proxy\ItemInfoView.cs" />
     <Compile Include="Assets\Scripts\Engine\UI\WindowMgr.cs" />
     <Compile Include="Assets\Scripts\GamePlay\UI\ShopWindow.cs" />
@@ -100,10 +104,12 @@
     <Compile Include="Assets\Scripts\GamePlay\UI\MainWindow.cs" />
     <Compile Include="Assets\Scripts\Engine\Tool\PreserveAttribute.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Battle\PlayerMgr.cs" />
+    <Compile Include="Assets\Scripts\AAA_NotHW\Camera\CameraMgr.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Manager\SyllableManager\Csv\Csv2SyllableData.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\InteractableItem\InteractableItemController.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Character\FSM\Interface\IState.cs" />
     <Compile Include="Assets\Scripts\Engine\UI\BaseWindowWrapper.cs" />
+    <Compile Include="Assets\Scripts\AAA_NotHW\Part\Part_Melody.cs" />
     <Compile Include="Assets\Scripts\GamePlay\UI\HWMsgTipWindow.cs" />
     <Compile Include="Assets\Scripts\Engine\Base\Send.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Other\SoundMgr.cs" />
@@ -112,10 +118,12 @@
     <Compile Include="Assets\Scripts\GamePlay\Proxy\LangProxy.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Manager\AudioManager\Data\Csv2SOData\CsvDataTest.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Character\FSM\MainCharacterFSM\IdleState_MainCharacter.cs" />
+    <Compile Include="Assets\Scripts\AAA_NotHW\Musicals\Musical.cs" />
     <Compile Include="Assets\Scripts\Engine\RefData\RefDataMgr.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Character\FSM\MainCharacterFSM\RunState_MainCharacter.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Logic\CurrencyMgr.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Manager\AudioManager\Main\AudioManager.cs" />
+    <Compile Include="Assets\Scripts\AAA_NotHW\UI\BtnTag.cs" />
     <Compile Include="Assets\3rdPlugin\HW Games\HW_SafeArea\Script\SafeAreaAdapter.cs" />
     <Compile Include="Assets\3rdPlugin\HW Games\HW_Rate\Scripts\HWRateMgr.cs" />
     <Compile Include="Assets\Scripts\Engine\Base\MsgType.cs" />
@@ -134,6 +142,7 @@
     <Compile Include="Assets\Scripts\Engine\Base\LocalAssetMgr.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Manager\SyllableManager\Main\SyllableManager.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Character\FSM\MainCharacterFSM\MainCharacterFSM.cs" />
+    <Compile Include="Assets\Scripts\AAA_NotHW\Part\IPart.cs" />
     <Compile Include="Assets\3rdPlugin\HW Games\HW_Rate\Plugins\iOS\AppStoreKit\UnityStoreKit.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Character\FSM\BaseFSM\IdleState_BaseFSM.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Manager\AudioManager\Data\Csv2SOData\EnemyData_SO.cs" />
@@ -150,6 +159,7 @@
     <Compile Include="Assets\Scripts\Engine\RefData\BaseRefDataMgr.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Keys\NoteSpawner.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Logic\SignMgr.cs" />
+    <Compile Include="Assets\Scripts\AAA_NotHW\Battle\HPModel.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Manager\AudioManager\Channels\BGM\BGMListener.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Level\Level.cs" />
   </ItemGroup>

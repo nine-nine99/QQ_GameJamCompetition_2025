@@ -11,8 +11,8 @@ public class BGMListener : SingletonMonoBehavior<BGMListener>
         {
             Debug.Log("is Finish");
             Send.SendMsg(SendType.MusicBattleEnd);
-            DialogueMgr.Instance.OpenDialogue(1);
-            GameStateMgr.Instance.SwitchState(GameState.Main);
+            // DialogueMgr.Instance.OpenDialogue(1);
+            // GameStateMgr.Instance.SwitchState(GameState.Main);
         }
     }
     // 获取当前播放时间（秒）

@@ -20,7 +20,7 @@ public class RunState_MainCharacter : IState
     public void OnEnter()
     {
         // Debug.Log("Entering Run State");
-        this.Speed = 2.2f; // 初始运行速度
+        this.Speed = 8f; // 初始运行速度
         if (fsm.animator == null)
         {
             Debug.LogError("Animator is not assigned in RunState_MainCharacter");

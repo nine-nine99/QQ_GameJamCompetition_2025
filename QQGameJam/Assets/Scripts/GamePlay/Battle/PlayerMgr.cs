@@ -42,24 +42,14 @@ public class PlayerMgr : Singleton<PlayerMgr>
     //开始游戏时调用，根据需求实现，需要在Battle.StartBattle()中调用
     public void StartBattle()
     {
-        PlacePlayer(new Vector2(0, -1.5f)); // 默认位置
-        Debug.Log("战斗开始，玩家已放置在默认位置 (0, -1.5)");
+        // PlacePlayer(new Vector2(0, -1.5f)); // 默认位置
+        // Debug.Log("战斗开始，玩家已放置在默认位置 (0, -1.5)");
     }
 
     //Update函数，根据需求实现，需要在Launch.Update()中调用
     public void OnUpdate()
     {
-        if (BattleMgr.Instance.state == BattleState.canIntoMusicBattle)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                Debug.Log("进入音乐战斗");
 
-                ClearPlayerPrefab(); // 清除玩家预制体
-                LevelMgr.Instance.StartMusicBattle(); // 开始音乐战斗
-
-            }
-        }
     }
 
     public void PlacePlayer(Vector2 position)

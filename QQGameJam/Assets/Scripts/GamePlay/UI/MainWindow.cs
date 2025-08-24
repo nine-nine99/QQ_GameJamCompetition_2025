@@ -27,9 +27,6 @@ public class MainWindow : BaseWindowWrapper<MainWindow>
     {
         // 游戏开始动画
         CoDelegator.Coroutine(StartPanelAnimation());
-
-        // 初始化菜单
-        RefreshList();
     }
 
     protected override void OnOpen()
@@ -39,26 +36,20 @@ public class MainWindow : BaseWindowWrapper<MainWindow>
 
     protected override void InitMsg()
     {
-        // btnShop.onClick.AddListener(OnBtnShopClick);
-        // btnSign.onClick.AddListener(OnBtnSignClick);
+        Send.RegisterMsg(SendType.Over_Conversation, OnConversationOver);
     }
 
     protected override void ClearMsg()
     {
-        // btnShop.onClick.RemoveListener(OnBtnShopClick);
-        // btnSign.onClick.RemoveListener(OnBtnSignClick);
+        Send.UnregisterMsg(SendType.Over_Conversation, OnConversationOver);
     }
 
-    private void OnBtnSignClick()
+    private void OnConversationOver(params object[] data)
     {
-        WindowMgr.Instance.OpenWindow<SignWindow>();
+        // 初始化菜单
+        RefreshList();
+        menuPanel.gameObject.SetActive(true);
     }
-
-    private void OnBtnShopClick()
-    {
-        WindowMgr.Instance.OpenWindow<ShopWindow>();
-    }
-
     private IEnumerator StartPanelAnimation()
     {
         CanvasGroup canvasGroup = StartPanel.GetComponent<CanvasGroup>();
@@ -66,10 +57,11 @@ public class MainWindow : BaseWindowWrapper<MainWindow>
 
         StartPanel.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.5f);
+        Send.SendMsg(SendType.Into_Conversation, 0); // 进入对话0
         // 缓慢变透明 
         float duration = 1f; // 动画持续时间
         float elapsedTime = 0f;
-        while (elapsedTime < duration)
+        while (elapsedTime <= duration)
         {
             elapsedTime += Time.deltaTime;
             canvasGroup.alpha = Mathf.Clamp01(1f - (elapsedTime / duration));
@@ -87,10 +79,10 @@ public class MainWindow : BaseWindowWrapper<MainWindow>
         {
             MenuSlotView slotView;
             GameObject slotGo = transListParent.GetChild(index).gameObject;
-            slotView = new MenuSlotView(slotGo, index);
+            slotView = new MenuSlotView(slotGo, 1);
             menuSlots.Add(slotView);
 
-            slotView.SetData(index);
+            slotView.SetData(1);
         }
     }
 }
@@ -98,20 +90,20 @@ public class MainWindow : BaseWindowWrapper<MainWindow>
 public class MenuSlotView
 {
     private GameObject slotGo;
-    private int slotIndex;
+    private int curSlotIndex;
     private Button btnClick;
 
     public MenuSlotView(GameObject _slotGo, int _slotIndex)
     {
         slotGo = _slotGo;
-        slotIndex = _slotIndex;
+        curSlotIndex = _slotIndex;
         btnClick = slotGo.GetComponent<Button>();
         btnClick.onClick.AddListener(OnClick);
     }
 
     public void SetData(int index)
     {
-        slotIndex = index;
+        curSlotIndex = index;
         slotGo.SetActive(true);
         Refresh();
     }
@@ -130,10 +122,13 @@ public class MenuSlotView
     }
     private void OnMenuSlotClick()
     {
-        // 根据槽索引执行相应的逻辑
-        LevelMgr.Instance.CurrentLevel = slotIndex; // 假设槽索引对应关卡
+        // Debug.Log(curSlotIndex);
+        Send.SendMsg(SendType.MenuSlotClick, curSlotIndex);
 
-        GameStateMgr.Instance.SwitchState(GameState.Battle);
+        // // 根据槽索引执行相应的逻辑
+        // LevelMgr.Instance.CurrentLevel = curSlotIndex; // 假设槽索引对应关卡
+
+        // GameStateMgr.Instance.SwitchState(GameState.Battle);
     }
 }
 

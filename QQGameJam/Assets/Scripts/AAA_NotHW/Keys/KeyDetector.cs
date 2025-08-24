@@ -43,7 +43,7 @@ public class KeyDetector : MonoBehaviour
                     // Debug.Log("Miss!");
                     ComboManager.Instance.ResetCombo();
                 }   
-                Destroy(hitUp.collider.gameObject);
+                ObjectPool.Instance.Recycle(hitUp.collider.gameObject);
                 hitSomething = true;
             }
 
@@ -67,7 +67,7 @@ public class KeyDetector : MonoBehaviour
                             // Debug.Log("Miss!");
                             ComboManager.Instance.ResetCombo();
                         }
-                        Destroy(hitDown.collider.gameObject);
+                        ObjectPool.Instance.Recycle(hitDown.collider.gameObject);
                     }
                 }
             }

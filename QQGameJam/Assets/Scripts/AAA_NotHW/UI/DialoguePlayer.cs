@@ -15,15 +15,15 @@ public class DialoguePlayer : MonoBehaviour
     //颜色
     static readonly Color32 PINK = new Color32(255, 105, 180, 255);
 
-    int idx = 0;
+    int index = 0;
     bool typing = false;
     Coroutine co;
     int currentTotalChars = 0;
 
     //animator
-    public Animator animA;                 // 旧动画所在对象
-    public Animator animB;                 // 新动画所在对象
-    [SerializeField] public int changeAnimationInt;//在第几句话打断，从旧动画换新动画,数字-1
+    public Animator animA; // 旧动画所在对象
+    public Animator animB; // 新动画所在对象
+    [SerializeField] public int changeAnimationInt; //在第几句话打断，从旧动画换新动画,数字-1
 
     void Start()
     {
@@ -39,7 +39,7 @@ public class DialoguePlayer : MonoBehaviour
             Debug.Log("no text");
             return;
         }
-        
+
         if (typing)
         {
             if (co != null) StopCoroutine(co);
@@ -49,16 +49,15 @@ public class DialoguePlayer : MonoBehaviour
             return;
         }
 
-        idx++;
-        Debug.Log(idx + " " + lines.Length);
-        if (idx < lines.Length) PlayCurrent();
+        index++;
+        if (index < lines.Length) PlayCurrent();
         else EndDialogue();
     }
 
     void PlayCurrent()
     {
         //如果是melody说话，变粉色。
-        string spk = (speakers != null && idx < speakers.Length) ? speakers[idx] : "";
+        string spk = (speakers != null && index < speakers.Length) ? speakers[index] : "";
         if (nameUI)
         {
             nameUI.text = spk;
@@ -66,14 +65,14 @@ public class DialoguePlayer : MonoBehaviour
                            ? (Color)PINK : Color.black;
         }
 
-        if (idx == changeAnimationInt)
+        if (index == changeAnimationInt)
         {
             if (animA) animA.gameObject.SetActive(false);
             if (animA) animB.gameObject.SetActive(true);
         }
 
         if (co != null) StopCoroutine(co);
-        co = StartCoroutine(TypeLine(lines[idx]));
+        co = StartCoroutine(TypeLine(lines[index]));
     }
 
     IEnumerator TypeLine(string line)
@@ -96,7 +95,11 @@ public class DialoguePlayer : MonoBehaviour
 
     void EndDialogue()
     {
+        index = 0;
+        DialogueMgr.Instance.isDialogueEnd = true;
+        
         Debug.Log(transform.parent.gameObject);
+
         transform.parent.gameObject.SetActive(false);
         // if (director) director.Play();
     }

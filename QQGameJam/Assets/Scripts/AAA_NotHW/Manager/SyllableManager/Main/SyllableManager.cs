@@ -13,7 +13,6 @@ public class SyllableManager : SingletonMonoBehavior<SyllableManager>
     private float currentTime => BGMListener.Instance.GetCurrentTime();
     private SyllableDetail currentDetail = null;
 
-
     void Update()
     {
         if (isPlaying == true)
@@ -29,6 +28,7 @@ public class SyllableManager : SingletonMonoBehavior<SyllableManager>
         {
             return;
         }
+        index = 0;
         isPlaying = true;
     }
     public void SongNodeStartIni()
@@ -41,14 +41,15 @@ public class SyllableManager : SingletonMonoBehavior<SyllableManager>
         if (currentDetail == null)
         {
             currentDetail = syllableData.datas[index];
+
             if (currentDetail == null)
             {
                 isPlaying = false;
                 Debug.Log("出现错误");
                 return;
             }
+
             // 处理音节的到达时间和持续时间
-            // 这里可以添加更多的逻辑来处理音节的播放
             arrivalTime = currentDetail.arrivalTime;
             duration = currentDetail.duration;
             // 实际生成时间
@@ -66,6 +67,7 @@ public class SyllableManager : SingletonMonoBehavior<SyllableManager>
         }
         if (currentTime >= BGMListener.Instance.GetTotalLength())
         {
+
             currentDetail = null;
             // 乐曲播放结束了
         }

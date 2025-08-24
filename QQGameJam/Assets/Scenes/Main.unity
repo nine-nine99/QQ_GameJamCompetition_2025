@@ -167,89 +167,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 664410678}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &53447803
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 53447805}
-  - component: {fileID: 53447804}
-  m_Layer: 0
-  m_Name: NoteCamera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!20 &53447804
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 53447803}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 3
-  m_BackGroundColor: {r: 0.18350299, g: 0.2154756, b: 0.2679245, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_Iso: 200
-  m_ShutterSpeed: 0.005
-  m_Aperture: 16
-  m_FocusDistance: 10
-  m_FocalLength: 50
-  m_BladeCount: 5
-  m_Curvature: {x: 2, y: 11}
-  m_BarrelClipping: 0.25
-  m_Anamorphism: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 1
-  orthographic size: 5.4
-  m_Depth: 7
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 64
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 0
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 0
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!4 &53447805
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 53447803}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &205968003
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,6 +177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 205968006}
   - component: {fileID: 205968005}
+  - component: {fileID: 205968007}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -333,6 +251,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &205968007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205968003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00d1d7c75849c0141b1d666e9ce22658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
 --- !u!114 &617309789 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2991720929373937393, guid: ea0c989596c4d5840ba0fea725053320, type: 3}
@@ -409,7 +340,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &898229542
 Transform:
   m_ObjectHideFlags: 0
@@ -478,9 +409,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Dialogues:
+  - {fileID: 898229541}
   - {fileID: 677995645}
   - {fileID: 800862689}
   - {fileID: 1191787305}
+  isDialogueEnd: 0
 --- !u!1 &1054984682
 GameObject:
   m_ObjectHideFlags: 0
@@ -1578,7 +1511,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 825639730075754488, guid: 388ce9de363a7cb4db251ec1790b9ebf, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8178324706222460341, guid: 388ce9de363a7cb4db251ec1790b9ebf, type: 3}
       propertyPath: m_SceneBindings.Array.data[2].value
@@ -1748,7 +1681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2088761458207173898, guid: ea0c989596c4d5840ba0fea725053320, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6123897314981555536, guid: ea0c989596c4d5840ba0fea725053320, type: 3}
       propertyPath: director
@@ -2070,6 +2003,5 @@ SceneRoots:
   - {fileID: 1184332434}
   - {fileID: 1379551554}
   - {fileID: 205968006}
-  - {fileID: 53447805}
   - {fileID: 664410678}
   - {fileID: 1722848518}

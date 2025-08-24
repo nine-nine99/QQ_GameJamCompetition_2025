@@ -16,11 +16,26 @@ MonoBehaviour:
   datas:
   - index: 1
     arrivalTime: 1
-    positionIndex: 1
+    positionIndex: 0
     duration: 1
     syllableType: 0
+  - index: 2
+    arrivalTime: 3
+    positionIndex: 2
+    duration: 1
+    syllableType: 0
+  - index: 3
+    arrivalTime: 1
+    positionIndex: 2
+    duration: 3
+    syllableType: 1
   - index: 2
     arrivalTime: 1.2
     positionIndex: 2
     duration: 1
     syllableType: 0
+  - index: 4
+    arrivalTime: 1
+    positionIndex: 5
+    duration: 2
+    syllableType: 1
