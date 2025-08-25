@@ -155,6 +155,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79f6ac660ca555428cd8c8c28d37fb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useLimit: 1
+  minPos: {x: -8.5, y: -5}
+  maxPos: {x: 8.5, y: 0}
 --- !u!1 &4262589898511657410
 GameObject:
   m_ObjectHideFlags: 0
