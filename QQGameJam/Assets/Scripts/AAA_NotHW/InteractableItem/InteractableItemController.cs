@@ -45,7 +45,7 @@ public class InteractableItemController : MonoBehaviour
     {
         if (isKeyItem)
         {
-            // 跳转触发：key item点击后进入里世界
+            // 跳转触发：key item点击后进入里世界（暂时设定了melody）
             //并且触发dialogue
             realWorld.OnExit();
             melodyWorld.OnEnter();
