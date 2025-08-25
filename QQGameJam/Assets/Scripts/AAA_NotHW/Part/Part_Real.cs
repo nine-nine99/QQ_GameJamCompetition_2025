@@ -15,7 +15,6 @@ public class Part_Real : Part, IPart
         // GenEnemy(EnemySpawnTransform);
     }
 
-
     public void OnExit()
     {
         if (curPlayer != null)

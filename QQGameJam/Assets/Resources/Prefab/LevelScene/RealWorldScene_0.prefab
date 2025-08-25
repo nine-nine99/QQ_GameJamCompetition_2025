@@ -1976,8 +1976,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c27b49f286adac44a750ad7768f9b34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemySpawnTransform: {fileID: 8866543361455400833}
-  curCharacter: {fileID: 0}
+  musicBattleScene: {fileID: 0}
+  spawnPoints: []
 --- !u!1 &7126773659567440201
 GameObject:
   m_ObjectHideFlags: 0
@@ -2352,7 +2352,7 @@ MonoBehaviour:
   scaleMultiplier: 1.4
   zoomedItem: {fileID: 6142542243739198963}
   self: {fileID: 8293281756835836695}
-  descriptionText: "\u5F85\u586B\u5165..."
+  descriptionText: "\u4E00\u53EA\u626D\u66F2\u7684\u9E66\u9E49\uFF1F\u66FE\u542C\u4EBA\u8BF4\u8FC7\u6709\u4E2A\u5929\u624DDJ\u62FF\u9E66\u9E49\u5F53\u91C7\u6837\u5668\u3002\u5514\uFF0C\u8FD9\u597D\u50CF\u66FE\u7ECF\u662F\u4E00\u4E2A\u6BD4\u65AF\u594E\u6C0F\u9E66\u9E49\u3002"
   width: 0.7
   height: 0.9
 --- !u!65 &1441114198454557291

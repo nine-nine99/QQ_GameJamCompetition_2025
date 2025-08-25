@@ -1597,8 +1597,11 @@ MonoBehaviour:
   zoomedItem: {fileID: 7377555513636694901}
   self: {fileID: 4504259199811282440}
   descriptionText: "\u4E00\u4E2A\u4E50\u961F\u7684\u4E13\u8F91\uFF0C\u4F46\u4E3A\u4EC0\u4E48\u662F\u773C\u73E0\u5B50\u505Alogo\u5462\uFF1F"
+  realWorld: {fileID: 0}
+  melodyWorld: {fileID: 0}
   width: 0.5
   height: 0.5
+  isKeyItem: 0
 --- !u!65 &8374994044710401981
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2478,8 +2481,11 @@ MonoBehaviour:
   zoomedItem: {fileID: 9020664612584008035}
   self: {fileID: 6090373219334735562}
   descriptionText: "\u5F85\u586B\u5165..."
+  realWorld: {fileID: 296000378676081686}
+  melodyWorld: {fileID: 793083657029932763}
   width: 0.7
   height: 0.7
+  isKeyItem: 1
 --- !u!65 &7504162791081207394
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2894,8 +2900,11 @@ MonoBehaviour:
   zoomedItem: {fileID: 6967962161066973595}
   self: {fileID: 5795023150384585885}
   descriptionText: "\u4E0A\u5468\u521A\u53BB\u73B0\u573A\u9886\u5230\u7684\uFF0C\u6CA1\u6709\u5C0F\u5077\u770B\u4E0A\u7684\u5E78\u5B58\u8005"
+  realWorld: {fileID: 0}
+  melodyWorld: {fileID: 0}
   width: 0.5
   height: 0.6
+  isKeyItem: 0
 --- !u!65 &5139725729331566026
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3102,8 +3111,11 @@ MonoBehaviour:
   zoomedItem: {fileID: 861827742282797611}
   self: {fileID: 6039434329381816180}
   descriptionText: "\u5475\u3002\u4E00\u4E2A\u72C2\u5984\u7684\u5C0F\u5973\u5B69\uFF0C\u5C06\u5B83\u6302\u5728\u5367\u5BA4\u91CC\u6BCF\u5929\u51DD\u89C6\u7740\uFF0C\u5984\u60F3\u81EA\u5DF1\u6210\u4E3A\u4E0B\u4E00\u4E2A\u7535\u5B50\u754C\u7684\u5929\u624D\u3002\u5F53\u7136\uFF0C\u6D77\u62A5\u4E5F\u89C9\u5F97\u81EA\u5DF1\u662F\u4E2A\u5929\u624D\u3002"
+  realWorld: {fileID: 0}
+  melodyWorld: {fileID: 0}
   width: 0.7
   height: 0.7
+  isKeyItem: 0
 --- !u!65 &4637279190303002162
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3786,8 +3798,11 @@ MonoBehaviour:
   zoomedItem: {fileID: 856661337158571135}
   self: {fileID: 5045437965363354984}
   descriptionText: "\u4E0A\u73ED\u7684\u65F6\u5019\u53EF\u4EE5\u62FF\u5077\u5077\u7FFB\u9605\uFF0C\u4E0D\u8FC7\u6211\u6700\u559C\u6B22\u7684\u90E8\u5206\u8FD8\u662F\u6BCF\u5468\u7684\u65B0\u5174\u97F3\u4E50\u6F6E\u6D41"
+  realWorld: {fileID: 0}
+  melodyWorld: {fileID: 0}
   width: 0.6
   height: 0.3
+  isKeyItem: 0
 --- !u!65 &7407574114158920986
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5102,8 +5117,11 @@ MonoBehaviour:
   zoomedItem: {fileID: 819130399156625664}
   self: {fileID: 5428034450984808370}
   descriptionText: "\u8FD9\u662F\u6211\u6700\u559C\u6B22\u7684CD\u4E4B\u4E00"
+  realWorld: {fileID: 0}
+  melodyWorld: {fileID: 0}
   width: 0.7
   height: 0.5
+  isKeyItem: 0
 --- !u!65 &2430021432281573765
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5662,7 +5680,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4603600133499285089
 Transform:
   m_ObjectHideFlags: 0
@@ -5822,8 +5840,11 @@ MonoBehaviour:
   zoomedItem: {fileID: 3566058708866522806}
   self: {fileID: 8213452638112291398}
   descriptionText: "\u8001\u677F\u6700\u559C\u6B22\u7684\u4E00\u5F20CD\uFF0C\u603B\u662F\u628A\u4ED6\u653E\u5728\u6700\u660E\u663E\u7684\u4F4D\u7F6E\u3002 "
+  realWorld: {fileID: 0}
+  melodyWorld: {fileID: 0}
   width: 0.7
   height: 0.7
+  isKeyItem: 0
 --- !u!65 &7124697377805968244
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6230,9 +6251,12 @@ MonoBehaviour:
   scaleMultiplier: 1.4
   zoomedItem: {fileID: 6142542243739198963}
   self: {fileID: 8293281756835836695}
-  descriptionText: "\u5F85\u586B\u5165..."
+  descriptionText: "\u4E00\u53EA\u626D\u66F2\u7684\u9E66\u9E49\uFF1F\u66FE\u542C\u4EBA\u8BF4\u8FC7\u6709\u4E2A\u5929\u624DDJ\u62FF\u9E66\u9E49\u5F53\u91C7\u6837\u5668\u3002\u5514\uFF0C\u8FD9\u597D\u50CF\u66FE\u7ECF\u662F\u4E00\u4E2A\u6BD4\u65AF\u594E\u6C0F\u9E66\u9E49\u3002"
+  realWorld: {fileID: 0}
+  melodyWorld: {fileID: 0}
   width: 0.7
   height: 0.9
+  isKeyItem: 0
 --- !u!65 &1441114198454557291
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6841,8 +6865,11 @@ MonoBehaviour:
   zoomedItem: {fileID: 5789838382804304266}
   self: {fileID: 7126773659567440201}
   descriptionText: "\u770B\u8D77\u6765\u6709\u4E9B\u5E74\u4EE3\u4E86\uFF0C\u62FF\u8D77\u6765\u751A\u81F3\u684C\u4E0A\u80FD\u6709\u4E00\u4E2A\u5751\uFF0C\u4F46\u662F\u97F3\u8272\u8FD8\u662F\u5341\u6210\u5341\u7684\u597D"
+  realWorld: {fileID: 0}
+  melodyWorld: {fileID: 0}
   width: 0.7
   height: 0.9
+  isKeyItem: 0
 --- !u!65 &5715724537609941890
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7047,8 +7074,11 @@ MonoBehaviour:
   zoomedItem: {fileID: 6212775318741493571}
   self: {fileID: 7154947619503162867}
   descriptionText: "DEFINITE,BCK,WENN,EnSh\u3002\u3002\u3002\u4E00\u5927\u5806\u4E13\u8F91\u88AB\u6563\u4E71\u5730\u6254\u5728\u5730\u4E0A\uFF0C\u5C0F\u5077\u5E76\u6CA1\u6709\u770B\u4E0A\u8FD9\u4E9B\u8001\u677F\u7684\u73CD\u85CF\u3002"
+  realWorld: {fileID: 0}
+  melodyWorld: {fileID: 0}
   width: 1.3
   height: 0.5
+  isKeyItem: 0
 --- !u!65 &9015304736281579201
 BoxCollider:
   m_ObjectHideFlags: 0
