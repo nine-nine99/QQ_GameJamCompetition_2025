@@ -57,7 +57,7 @@ public class MainWindow : BaseWindowWrapper<MainWindow>
 
         StartPanel.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.5f);
-        Send.SendMsg(SendType.Into_Conversation, 0); // 进入对话0
+        // Send.SendMsg(SendType.Into_Conversation, 0); // 进入对话0
         // 缓慢变透明 
         float duration = 1f; // 动画持续时间
         float elapsedTime = 0f;
@@ -69,6 +69,8 @@ public class MainWindow : BaseWindowWrapper<MainWindow>
         }
 
         StartPanel.gameObject.SetActive(false);
+        RefreshList();
+        menuPanel.gameObject.SetActive(true);
     }
 
     private void RefreshList()
@@ -124,7 +126,11 @@ public class MenuSlotView
     {
         // Debug.Log(curSlotIndex);
         Send.SendMsg(SendType.MenuSlotClick, curSlotIndex);
-
+        Debug.Log(curSlotIndex);
+        if (curSlotIndex == 1) // 第一关
+        {
+            Send.SendMsg(SendType.Into_Conversation, 0);
+        }
         // // 根据槽索引执行相应的逻辑
         // LevelMgr.Instance.CurrentLevel = curSlotIndex; // 假设槽索引对应关卡
 

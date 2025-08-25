@@ -23,15 +23,20 @@ public class Level : MonoBehaviour
     }
     public void Init()
     {
-        // 清空之前的 parts 列表
         parts.Clear();
-        // 遍历每个子物体，获取IPart，并装入parts列表
         parts = GetComponentsInChildren<IPart>(true).ToList();
         Debug.Log(parts.Count);
+
         ChangePart(0);
 
         // 初始化音符生成器
         NoteSpawner.Instance.InitNoteSpawn(spawnPoints);
+
+        //如果是第一关，可以在这里自动触发对话
+        if (LevelMgr.Instance.CurrentLevel == 0)
+        {
+            Send.SendMsg(SendType.Into_Conversation, 0);
+        }
     }
 
     private void IniMsg()
@@ -58,7 +63,7 @@ public class Level : MonoBehaviour
     public void OnConversationOver(params object[] data)
     {
         int index = (int)data[0];
-        Debug.Log(index);
+        // Debug.Log(index);
         if (index == 0) return;
         if (index == 1) // 当是index为1的对话结束
         {
