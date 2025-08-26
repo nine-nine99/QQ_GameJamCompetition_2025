@@ -23,4 +23,5 @@ public class Part : MonoBehaviour
         curEnemy.transform.position = Tran.position;
         curEnemys.Add(curEnemy);
     }
+    
 }

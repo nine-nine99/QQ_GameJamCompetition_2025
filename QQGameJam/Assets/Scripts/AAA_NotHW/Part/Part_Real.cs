@@ -23,7 +23,6 @@ public class Part_Real : Part, IPart
         {
             ObjectPool.Instance.Recycle(obj);
         }
-
         curPlayer = null;
         curEnemys.Clear();
         gameObject.SetActive(false);

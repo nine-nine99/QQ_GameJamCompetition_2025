@@ -140,6 +140,7 @@
     <Compile Include="Assets\Scripts\Utils\Enums.cs" />
     <Compile Include="Assets\Scripts\GamePlay\RefData\RefLanguage.cs" />
     <Compile Include="Assets\Scripts\Engine\Base\LocalAssetMgr.cs" />
+    <Compile Include="Assets\Scripts\AAA_NotHW\Part\PartManager.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Manager\SyllableManager\Main\SyllableManager.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Character\FSM\MainCharacterFSM\MainCharacterFSM.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Part\IPart.cs" />
