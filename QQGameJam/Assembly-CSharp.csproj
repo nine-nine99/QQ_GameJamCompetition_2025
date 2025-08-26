@@ -90,8 +90,8 @@
     <Compile Include="Assets\Scripts\GamePlay\Logic\ScoreMgr.cs" />
     <Compile Include="Assets\3rdPlugin\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Battle\HPBarControl.cs" />
-    <Compile Include="Assets\Scripts\GamePlay\Proxy\ItemInfoView.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Part\Part_Real.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Proxy\ItemInfoView.cs" />
     <Compile Include="Assets\Scripts\Engine\UI\WindowMgr.cs" />
     <Compile Include="Assets\Scripts\GamePlay\UI\ShopWindow.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\UI\DialoguePlayer.cs" />
@@ -99,6 +99,7 @@
     <Compile Include="Assets\Scripts\GamePlay\Logic\GradeMgr.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Other\TimeMgr.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Manager\SyllableManager\Data\SyllableData_SO.cs" />
+    <Compile Include="Assets\Scripts\AAA_NotHW\Part\Part_InsideWorld.cs" />
     <Compile Include="Assets\Scripts\GamePlay\UI\GameOverWindow.cs" />
     <Compile Include="Assets\Scripts\Engine\Base\CrashCallBack.cs" />
     <Compile Include="Assets\Scripts\GamePlay\UI\MainWindow.cs" />

@@ -39,4 +39,26 @@ public class CameraMgr : SingletonMonoBehavior<CameraMgr>
         // 平滑移动
         transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * smoothSpeed);
     }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        if (!useLimit) return;
+
+        Gizmos.color = Color.green;
+        // 画出限制范围的矩形
+        Vector3 center = new Vector3(
+            (minPos.x + maxPos.x) / 2,
+            (minPos.y + maxPos.y) / 2,
+            transform.position.z
+        );
+        Vector3 size = new Vector3(
+            Mathf.Abs(maxPos.x - minPos.x),
+            Mathf.Abs(maxPos.y - minPos.y),
+            0
+        );
+
+        Gizmos.DrawWireCube(center, size);
+    }
+#endif
 }

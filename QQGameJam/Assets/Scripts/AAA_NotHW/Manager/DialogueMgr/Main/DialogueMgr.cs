@@ -21,12 +21,6 @@ public class DialogueMgr : SingletonMonoBehavior<DialogueMgr>
     private void Update()
     {
         Send.SendMsg(SendType.Over_Conversation, curIndex);
-        // Debug.Log(curIndex);
-        // if (curIndex == 0) // 对话0结束时，再进入第一关
-        // {
-        //     LevelMgr.Instance.CurrentLevel = 1;
-        // }
-
         isDialogueEnd = false;
     }
 
@@ -48,6 +42,14 @@ public class DialogueMgr : SingletonMonoBehavior<DialogueMgr>
     public void OpenDialogue(int index)
     {
         Debug.Log($"打开对话 {index}, 对象={Dialogues[index].name}");
+
+        Transform parent = Dialogues[index].transform.parent;
+        while (parent != null)
+        {
+            parent.gameObject.SetActive(true);
+            parent = parent.parent;
+        }
+
         Dialogues[index].SetActive(true);
     }
 

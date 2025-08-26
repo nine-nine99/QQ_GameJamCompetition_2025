@@ -28,7 +28,7 @@ public class PartManager : MonoBehaviour
     if (currentPart != null)
     {
       Debug.Log(currentPart);
-      Debug.Log("trigger");
+      // Debug.Log("trigger");
       currentPart.OnExit();
     }
 
