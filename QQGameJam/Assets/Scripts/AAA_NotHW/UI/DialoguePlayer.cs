@@ -97,10 +97,16 @@ public class DialoguePlayer : MonoBehaviour
     {
         index = 0;
         DialogueMgr.Instance.isDialogueEnd = true;
-        
-        Debug.Log(transform.parent.gameObject);
-
         transform.parent.gameObject.SetActive(false);
+
+        // 调用全局 DialogueMgr 的结束逻辑
+        DialogueMgr.Instance.EndDialogue();
+        // index = 0;
+        // DialogueMgr.Instance.isDialogueEnd = true;
+
+        // Debug.Log(transform.parent.gameObject);
+
+        
         // if (director) director.Play();
     }
 }

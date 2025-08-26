@@ -47,8 +47,16 @@ public class InteractableItemController : MonoBehaviour
         {
             // 跳转触发：key item点击后进入里世界（暂时设定了melody）
             //并且触发dialogue
-            realWorld.OnExit();
-            melodyWorld.OnEnter();
+            // 打开第 1 个对话
+            DialogueMgr.Instance.OpenDialogue(1);
+
+            // 注册结束回调
+            DialogueMgr.Instance.onDialogueEnd = () =>
+            {
+                Debug.Log("对话结束，切换世界");
+                realWorld.OnExit();
+                melodyWorld.OnEnter();
+            };
 
         }
         else

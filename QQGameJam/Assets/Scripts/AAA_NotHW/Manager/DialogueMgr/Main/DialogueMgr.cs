@@ -7,6 +7,7 @@ public class DialogueMgr : SingletonMonoBehavior<DialogueMgr>
     public List<GameObject> Dialogues;
     public bool isDialogueEnd = false;
     private int curIndex;
+    public System.Action onDialogueEnd;
     private void OnEnable()
     {
         Send.RegisterMsg(SendType.Into_Conversation, OnIntoConversation);
@@ -48,5 +49,18 @@ public class DialogueMgr : SingletonMonoBehavior<DialogueMgr>
     {
         Debug.Log($"打开对话 {index}, 对象={Dialogues[index].name}");
         Dialogues[index].SetActive(true);
+    }
+
+    public void EndDialogue()
+    {
+        isDialogueEnd = true;
+
+        if (curIndex >= 0 && curIndex < Dialogues.Count)
+        {
+            Dialogues[curIndex].SetActive(false);
+        }
+
+        // 通知监听者（比如 InteractableItemController）
+        onDialogueEnd?.Invoke();
     }
 }
