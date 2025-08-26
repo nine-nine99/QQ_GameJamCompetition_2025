@@ -5502,6 +5502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicBattleScene: {fileID: 0}
   spawnPoints: []
+  realPart: {fileID: 0}
 --- !u!1 &7119751135059769036
 GameObject:
   m_ObjectHideFlags: 0
@@ -5947,6 +5948,7 @@ MonoBehaviour:
   - {fileID: 2186926834716438953}
   - {fileID: 418880787994024085}
   - {fileID: 4128284440279748914}
+  realPart: {fileID: 296000378676081686}
 --- !u!1 &7212624139705209730
 GameObject:
   m_ObjectHideFlags: 0

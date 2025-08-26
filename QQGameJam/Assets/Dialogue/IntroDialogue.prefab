@@ -165,8 +165,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8320938176220789068}
   - {fileID: 8456868674324799726}
+  - {fileID: 8320938176220789068}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -622,10 +622,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textUI: {fileID: 6903216132924657453}
+  nameUI: {fileID: 0}
+  speakers: []
   lines:
   - "......\u53C8\u8FD9\u4E48\u4E71\uFF0C\u8FD9\u4E0B\u6709\u7684\u6536\u62FE\u4E86\u3002"
   director: {fileID: 0}
   charInterval: 0.03
+  animA: {fileID: 0}
+  animB: {fileID: 0}
+  changeAnimationInt: 0
 --- !u!1 &6262920428310975377
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,10 +1030,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textUI: {fileID: 7773127116074653202}
+  nameUI: {fileID: 0}
+  speakers: []
   lines:
   - "\u592A\u9633\u96E8\u53C8\u4E0B\u8D77\u6765\u4E86\uFF0C\u4ECA\u5929\u8BE5\u53BB\u4E0A\u73ED\u4E86\u3002"
   director: {fileID: 0}
   charInterval: 0.03
+  animA: {fileID: 0}
+  animB: {fileID: 0}
+  changeAnimationInt: 0
 --- !u!1 &8329615047273443217
 GameObject:
   m_ObjectHideFlags: 0

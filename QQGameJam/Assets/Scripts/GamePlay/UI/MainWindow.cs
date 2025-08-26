@@ -126,7 +126,7 @@ public class MenuSlotView
     {
         // Debug.Log(curSlotIndex);
         Send.SendMsg(SendType.MenuSlotClick, curSlotIndex);
-        Debug.Log(curSlotIndex);
+        // Debug.Log(curSlotIndex);
         if (curSlotIndex == 1) // 第一关
         {
             Send.SendMsg(SendType.Into_Conversation, 0);

@@ -9,6 +9,7 @@ public class Level : MonoBehaviour
     public GameObject musicBattleScene; // 音乐战斗预制体
     public List<Transform> spawnPoints; // 音符生成点
     private List<IPart> parts = new List<IPart>();
+    public Part_Real realPart;
 
     private IPart curPart;
     private void OnEnable()
@@ -29,15 +30,31 @@ public class Level : MonoBehaviour
 
         ChangePart(0);
 
-        // 初始化音符生成器
+        // 开始时隐藏 Part_Real
+        if (realPart != null)
+            realPart.gameObject.SetActive(false);
+
         NoteSpawner.Instance.InitNoteSpawn(spawnPoints);
 
-        //如果是第一关，可以在这里自动触发对话
-        if (LevelMgr.Instance.CurrentLevel == 0)
+        if (LevelMgr.Instance.CurrentLevel == -1)
         {
             Send.SendMsg(SendType.Into_Conversation, 0);
+
+            DialogueMgr.Instance.onDialogueEnd += () =>
+            {
+                Debug.Log("对话0结束，生成玩家 + 显示 Part_Real");
+
+                if (realPart != null)
+                {
+                    realPart.gameObject.SetActive(true);
+                    realPart.GenPlayer(realPart.PlayerSpawnTransform);
+                }
+            };
         }
     }
+
+
+
 
     private void IniMsg()
     {

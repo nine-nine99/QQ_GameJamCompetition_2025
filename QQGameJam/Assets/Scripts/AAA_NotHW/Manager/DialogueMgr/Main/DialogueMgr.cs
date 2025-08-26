@@ -41,7 +41,7 @@ public class DialogueMgr : SingletonMonoBehavior<DialogueMgr>
 
     public void OpenDialogue(int index)
     {
-        Debug.Log($"打开对话 {index}, 对象={Dialogues[index].name}");
+        // Debug.Log($"打开对话 {index}, 对象={Dialogues[index].name}");
 
         Transform parent = Dialogues[index].transform.parent;
         while (parent != null)
