@@ -11,17 +11,26 @@ public class Part_Melody : Part, IPart
     public void OnEnter()
     {
         gameObject.SetActive(true);
-        CameraMgr.Instance.target = GenPlayer(PlayerSpawnTransform).transform;
+        var player = GenPlayer(PlayerSpawnTransform);
+
+        // 禁用玩家移动
+        var fsm = player.GetComponent<MainCharacterFSM>();
+        if (fsm != null) fsm.enabled = false;
+
         GenEnemy(EnemySpawnTransform);
     }
     public void OnExit()
     {
         if (curPlayer != null)
-            ObjectPool.Instance.Recycle(curPlayer);
-        foreach (var obj in curEnemys)
         {
-            ObjectPool.Instance.Recycle(obj);
+            var fsm = curPlayer.GetComponent<MainCharacterFSM>();
+            if (fsm != null) fsm.enabled = true;
+            ObjectPool.Instance.Recycle(curPlayer);
         }
+        foreach (var obj in curEnemys)
+            {
+                ObjectPool.Instance.Recycle(obj);
+            }
 
         curPlayer = null;
         curEnemys.Clear();
