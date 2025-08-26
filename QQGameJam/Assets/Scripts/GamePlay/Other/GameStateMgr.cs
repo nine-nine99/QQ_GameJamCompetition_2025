@@ -20,7 +20,7 @@ public class GameStateMgr : Singleton<GameStateMgr> {
     public void SwitchState(GameState state) {
         //check state 
         if (curState == state) {
-            Debug.LogError("The Same State, Please Check Code");
+            // Debug.LogError("The Same State, Please Check Code");
         }
 
         preState = curState;

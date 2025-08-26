@@ -54,13 +54,29 @@ public class InteractableItemController : MonoBehaviour
     // 鼠标点击时调用
     private void OnMouseDown()
     {
+        // 普通物品：弹出详情窗口
+        if (!isKeyItem)
+        {
+            var spriteRenderer = self.GetComponent<SpriteRenderer>();
+            WindowMgr.Instance.OpenWindow<InteractableItemWindow>();
+            InteractableItemWindow.Instance.SetContent(
+                spriteRenderer.sprite,
+                descriptionText,
+                width,
+                height
+            );
+            return;
+        }
+
+        //如果是key item
         PlayPosition dialogue_PlayPosition = PlayPosition.Prev;
+        bool MusicBool = false;
+        int dialogueId = 0;
+        IPart targetWorld = null;
 
         if (isKeyItem)
         {
-            int dialogueId = 0;
-            IPart targetWorld = null;
-            Debug.Log("hello" + itemId);
+            // Debug.Log("hello" + itemId);
             // 根据 itemId 分配不同对话 & 世界
             switch (itemId)
             {
@@ -71,10 +87,11 @@ public class InteractableItemController : MonoBehaviour
                     targetWorld = insideWorld;
                     Debug.Log("[KeyItem] 选择了物品 1 → 对话 1 → insideWorld");
                     break;
-                case 1://里世界（第一章） -> melody世界
+                case 1://里世界（第一章） -> melody对话 -> 音乐战斗场面
                     dialogueId = 2;
-                    dialogue_PlayPosition = PlayPosition.After;
-                    targetWorld = melodyWorld;
+                    dialogue_PlayPosition = PlayPosition.Prev;
+                    targetWorld = null;
+                    MusicBool = true;
                     break;
                 case 2:
                     dialogueId = 3;
@@ -90,12 +107,23 @@ public class InteractableItemController : MonoBehaviour
                 if (dialogue_PlayPosition == PlayPosition.Prev)
                 {
                     DialogueMgr.Instance.OpenDialogue(dialogueId);
-                    // 对话结束后切换世界
+                    // 对话结束后切换世界或者音乐战斗
                     DialogueMgr.Instance.onDialogueEnd = () =>
                     {
+                        DialogueMgr.Instance.CloseDialogue(dialogueId);
                         if (realWorld != null) realWorld.OnExit();
-                        if (insideWorld != null) insideWorld.OnExit();
-                        PartManager.Instance.SwitchTo(targetWorld);
+                        else if (insideWorld != null)
+                        {
+                            // Debug.Log("you did");
+                            insideWorld.OnExit();
+                        }
+
+                        if (MusicBool)
+                        {
+                            FindObjectOfType<Level>().OnConversationOver(new object[] { 1 });
+                        }
+    
+                        if (targetWorld != null) PartManager.Instance.SwitchTo(targetWorld);
                     };
                 }
                 else
@@ -103,7 +131,7 @@ public class InteractableItemController : MonoBehaviour
                     // 如果对话在切换场景后
                     if (realWorld != null) realWorld.OnExit();
                     if (insideWorld != null) insideWorld.OnExit();
-                    PartManager.Instance.SwitchTo(targetWorld);
+                    if (targetWorld != null) PartManager.Instance.SwitchTo(targetWorld);
                     DialogueMgr.Instance.OpenDialogue(dialogueId);
                 }
 
@@ -114,18 +142,6 @@ public class InteractableItemController : MonoBehaviour
                 if (insideWorld != null) insideWorld.OnExit();
                 PartManager.Instance.SwitchTo(targetWorld);
             }
-        }
-        else
-        {
-            // 普通物品：弹出详情窗口
-            var spriteRenderer = self.GetComponent<SpriteRenderer>();
-            WindowMgr.Instance.OpenWindow<InteractableItemWindow>();
-            InteractableItemWindow.Instance.SetContent(
-                spriteRenderer.sprite,
-                descriptionText,
-                width,
-                height
-            );
         }
     }
 }

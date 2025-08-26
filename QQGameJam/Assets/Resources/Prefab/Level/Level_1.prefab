@@ -1355,7 +1355,7 @@ Transform:
   m_GameObject: {fileID: 2344474025764065025}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 20, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3872,7 +3872,7 @@ MonoBehaviour:
   descriptionText: "\u5F85\u586B\u5165..."
   realWorld: {fileID: 0}
   melodyWorld: {fileID: 793083657029932763}
-  insideWorld: {fileID: 0}
+  insideWorld: {fileID: 5234971892570130038}
   width: 0.7
   height: 0.7
   isKeyItem: 1

@@ -21,7 +21,7 @@ public class DialogueMgr : SingletonMonoBehavior<DialogueMgr>
     private void Update()
     {
         Send.SendMsg(SendType.Over_Conversation, curIndex);
-        isDialogueEnd = false;
+        // isDialogueEnd = false;
     }
 
     public void OnIntoConversation(params object[] data)
@@ -64,5 +64,19 @@ public class DialogueMgr : SingletonMonoBehavior<DialogueMgr>
 
         // 通知监听者（比如 InteractableItemController）
         onDialogueEnd?.Invoke();
+    }
+
+    public void CloseDialogue(int index)
+    {
+        if (index < 0 || index >= Dialogues.Count) return;
+
+        Transform parent = Dialogues[index].transform.parent;
+        while (parent != null)
+        {
+            parent.gameObject.SetActive(false);
+            parent = parent.parent;
+        }
+
+        Dialogues[index].SetActive(false);
     }
 }

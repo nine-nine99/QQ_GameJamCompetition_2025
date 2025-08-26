@@ -33,7 +33,7 @@ public class DialoguePlayer : MonoBehaviour
 
     public void OnClickDialogueBox()
     {
-        Debug.Log("yes");
+        // Debug.Log("yes");
         if (!textUI)
         {
             Debug.Log("no text");
@@ -95,7 +95,7 @@ public class DialoguePlayer : MonoBehaviour
 
     void EndDialogue()
     {
-        index = 0;
+        // index = 0;
         DialogueMgr.Instance.isDialogueEnd = true;
         transform.parent.gameObject.SetActive(false);
 
