@@ -27,10 +27,11 @@ public class Part_Melody : Part, IPart
             if (fsm != null) fsm.enabled = true;
             ObjectPool.Instance.Recycle(curPlayer);
         }
+        
         foreach (var obj in curEnemys)
-            {
-                ObjectPool.Instance.Recycle(obj);
-            }
+        {
+            ObjectPool.Instance.Recycle(obj);
+        }
 
         curPlayer = null;
         curEnemys.Clear();

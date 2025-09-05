@@ -1,16 +1,10 @@
 using UnityEngine;
 
-public class PartManager : MonoBehaviour
+public class PartManager : SingletonMonoBehavior<PartManager>
 {
-  public static PartManager Instance;
-
-  private IPart currentPart;
+  public IPart currentPart;
   [SerializeField] private Part_Real startWorld;
-
-  private void Awake()
-  {
-    Instance = this;
-  }
+  [SerializeField] private Part_Real InsidePart;
 
   private void Start()
   {
@@ -37,6 +31,4 @@ public class PartManager : MonoBehaviour
   }
 
   public IPart GetCurrentPart() => currentPart;
-
-  
 }

@@ -6,142 +6,88 @@ using TMPro;
 
 public class InteractableItemController : MonoBehaviour
 {
-    private Vector3 originalScale;
-    public float scaleMultiplier = 1.4f;
-
-    // public GameObject blackOverlay;
-    public GameObject zoomedItem;
-    public GameObject self;
+    private Level mLevel => LevelMgr.Instance.curLevelObj;
+    private GameObject originItem => transform.GetChild(0).gameObject;
+    private GameObject zoomedItem => transform.GetChild(1).gameObject;
     public string descriptionText = "待填入...";
-
-    [Header("世界引用")]
-    public Part_Real realWorld;
-    public Part_Melody melodyWorld;
-    public Part_InsideWorld insideWorld;
-
+    [Header("物品ID")]
+    public int itemId;
     //图片点击后的尺寸，可以单独设置
     public float width;
     public float height;
 
-    // 是否为关键物品（唱片）
-    public bool isKeyItem = false;
-
-    [Header("物品参数")]
-    public int itemId;        // 唯一编号，用来区分不同 key item
-
-    public enum PlayPosition
-    {
-        Prev,
-        After
-    }
-
-    void Start()
-    {
-    }
-
+    [Header("物品的属性")]
+    public bool isTransItem = false;
+    public Item item;
+    [Header("要跳转到的Part")]
+    public int partID;
+    [Header("要进入的战斗的ID")]
+    public int battleID;
     void OnMouseEnter()
     {
-        self.SetActive(false);
+        originItem.SetActive(false);
         zoomedItem.SetActive(true);
     }
 
     void OnMouseExit()
     {
-        self.SetActive(true);
+        originItem.SetActive(true);
+        zoomedItem.SetActive(false);
+    }
+
+    public void Init()
+    {
+        originItem.SetActive(true);
+        zoomedItem.SetActive(false);
+    }
+
+    public void Clear()
+    {
+        originItem.SetActive(true);
         zoomedItem.SetActive(false);
     }
 
     // 鼠标点击时调用
     private void OnMouseDown()
     {
+        normalItem();
+
+        transItem(partID);
+
+        battleItem();
+    }
+
+    private void normalItem()
+    {
+        if (item != Item.normal) return;
+
         // 普通物品：弹出详情窗口
-        if (!isKeyItem)
-        {
-            var spriteRenderer = self.GetComponent<SpriteRenderer>();
-            WindowMgr.Instance.OpenWindow<InteractableItemWindow>();
-            InteractableItemWindow.Instance.SetContent(
-                spriteRenderer.sprite,
-                descriptionText,
-                width,
-                height
-            );
-            return;
-        }
+        var spriteRenderer = originItem.GetComponent<SpriteRenderer>();
+        WindowMgr.Instance.OpenWindow<InteractableItemWindow>();
+        InteractableItemWindow.Instance.SetContent(
+            spriteRenderer.sprite,
+            descriptionText,
+            width,
+            height
+        );
+        return;
+    }
 
-        //如果是key item
-        PlayPosition dialogue_PlayPosition = PlayPosition.Prev;
-        bool MusicBool = false;
-        int dialogueId = 0;
-        IPart targetWorld = null;
+    private void transItem(int partIndex)
+    {
+        if (item != Item.tran) return;
 
-        if (isKeyItem)
-        {
-            // Debug.Log("hello" + itemId);
-            // 根据 itemId 分配不同对话 & 世界
-            switch (itemId)
-            {
-                //现实世界-> 里世界（第一章）
-                case 0:
-                    dialogueId = 1;
-                    dialogue_PlayPosition = PlayPosition.Prev;
-                    targetWorld = insideWorld;
-                    Debug.Log("[KeyItem] 选择了物品 1 → 对话 1 → insideWorld");
-                    break;
-                case 1://里世界（第一章） -> melody对话 -> 音乐战斗场面
-                    dialogueId = 2;
-                    dialogue_PlayPosition = PlayPosition.Prev;
-                    targetWorld = null;
-                    MusicBool = true;
-                    break;
-                case 2:
-                    dialogueId = 3;
-                    targetWorld = realWorld;
-                    break;
-                default:
-                    Debug.LogWarning($"未定义的 key item ID: {itemId}");
-                    return;
-            }
-            if (dialogueId != 0)
-            {
-                // 如果对话在切换场景前
-                if (dialogue_PlayPosition == PlayPosition.Prev)
-                {
-                    DialogueMgr.Instance.OpenDialogue(dialogueId);
-                    // 对话结束后切换世界或者音乐战斗
-                    DialogueMgr.Instance.onDialogueEnd = () =>
-                    {
-                        DialogueMgr.Instance.CloseDialogue(dialogueId);
-                        if (realWorld != null) realWorld.OnExit();
-                        else if (insideWorld != null)
-                        {
-                            // Debug.Log("you did");
-                            insideWorld.OnExit();
-                        }
+        Clear();
 
-                        if (MusicBool)
-                        {
-                            FindObjectOfType<Level>().OnConversationOver(new object[] { 1 });
-                        }
-    
-                        if (targetWorld != null) PartManager.Instance.SwitchTo(targetWorld);
-                    };
-                }
-                else
-                {
-                    // 如果对话在切换场景后
-                    if (realWorld != null) realWorld.OnExit();
-                    if (insideWorld != null) insideWorld.OnExit();
-                    if (targetWorld != null) PartManager.Instance.SwitchTo(targetWorld);
-                    DialogueMgr.Instance.OpenDialogue(dialogueId);
-                }
+        mLevel.ChangePart(partIndex);   // 进入里世界
+    }
 
-            }
-            else
-            {
-                if (realWorld != null) realWorld.OnExit();
-                if (insideWorld != null) insideWorld.OnExit();
-                PartManager.Instance.SwitchTo(targetWorld);
-            }
-        }
+    private void battleItem()
+    {
+        if (item != Item.battle) return;
+
+        Send.SendMsg(SendType.Into_Conversation, 2); // 发送消息，准备进入音乐战斗
+
+        Clear();
     }
 }

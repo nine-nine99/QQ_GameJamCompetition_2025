@@ -145,7 +145,7 @@ public class HPBarControl : MonoBehaviour
         
         // 计算目标位置（使HP条从顶部开始减少）
         Vector3 targetPosition = CalculateTargetPosition(targetPercentage);
-        Debug.Log("11");
+        
         // 缩放动画
         currentTween = topBar.DOScale(targetScale, animationDuration)
             .SetEase(easeType)

@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 8130060595684685665}
   - component: {fileID: 5164594642091944609}
   - component: {fileID: 1973359600520730874}
+  - component: {fileID: 1582961015121249350}
   m_Layer: 5
   m_Name: SetMenu
   m_TagString: Untagged
@@ -191,6 +192,41 @@ MonoBehaviour:
   tag_2: {fileID: 1888103842042529929}
   menu1: {fileID: 7140378629345325961}
   menu2: {fileID: 4079257911466466099}
+--- !u!114 &1582961015121249350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452117312353683012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 316d509606522bf4b9209f0abaa35d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Btns:
+  - {fileID: 1611449969995846606}
+  - {fileID: 7360212610784270658}
+  - {fileID: 37370491474954221}
+  - {fileID: 7876199662427060421}
+  - {fileID: 4230190553134246309}
+  - {fileID: 382093833881241850}
+  ResetBtn: {fileID: 530085617503463209}
+  keyNames:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  defaultKeys: 710000007700000065000000720000007400000079000000
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  waitingColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  conflictColor: {r: 1, g: 0, b: 0, a: 1}
+  successColor: {r: 0, g: 1, b: 0, a: 1}
+  waitingTimeout: 5
+  conflictMode: 1
+  showConflictMessages: 1
 --- !u!1 &525035558556359197
 GameObject:
   m_ObjectHideFlags: 0

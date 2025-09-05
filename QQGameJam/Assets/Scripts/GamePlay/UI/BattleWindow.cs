@@ -26,8 +26,10 @@ public class BattleWindow : BaseWindowWrapper<BattleWindow>
 
     protected override void OnOpen()
     {
+        btn1.onClick.AddListener(OnBtn_1);
         btn2.onClick.AddListener(OnBtn_2);
         btn3.onClick.AddListener(OnBtn_3);
+
         btn_return1.onClick.AddListener(OnBtnReturn);
         btn_return2.onClick.AddListener(OnBtnReturn);
     }
@@ -40,8 +42,10 @@ public class BattleWindow : BaseWindowWrapper<BattleWindow>
     protected override void OnClose()
     {
         base.OnClose();
+        btn1.onClick.RemoveListener(OnBtn_1);
         btn2.onClick.RemoveListener(OnBtn_2);
         btn3.onClick.RemoveListener(OnBtn_3);
+
         btn_return1.onClick.RemoveListener(OnBtnReturn);
         btn_return2.onClick.RemoveListener(OnBtnReturn);
     }
@@ -59,17 +63,28 @@ public class BattleWindow : BaseWindowWrapper<BattleWindow>
         scenePanel.gameObject.SetActive(true);
     }
 
-    public void OnBtn_2()
+
+    // 退出游戏按钮
+    private void OnBtn_3()
+    {
+        Application.Quit();
+    }
+
+    // 设置按钮
+    private void OnBtn_2()
     {
         Menu_1.gameObject.SetActive(true);
         Menu_2.gameObject.SetActive(true);
     }
 
-    public void OnBtn_3()
+    // 返回按钮
+    private void OnBtn_1()
     {
         settingControl.OnOutImageClicked();
     }
-    public void OnBtnReturn()
+
+
+    private void OnBtnReturn()
     {
         // 同时关闭Menu_1和Menu_2
         Menu_1.gameObject.SetActive(false);

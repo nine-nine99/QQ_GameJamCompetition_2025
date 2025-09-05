@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\GamePlay\RefData\RefTask.cs" />
     <Compile Include="Assets\Scripts\Engine\UI\BaseWindow.cs" />
     <Compile Include="Assets\Scripts\GamePlay\UI\InteractableItemWindow.cs" />
+    <Compile Include="Assets\Scripts\AAA_NotHW\UI\SetMenuControl.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Manager\DialogueMgr\Main\DialogueMgr.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Logic\LevelMgr.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Part\Part.cs" />

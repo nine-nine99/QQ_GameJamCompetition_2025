@@ -9,7 +9,6 @@ using UnityEngine;
 public class PlayerMgr : Singleton<PlayerMgr>
 {
     // 玩家预制体路径 Path：Prefab/Character/MainCharacter
-    private string playerPrefabPath = "Prefab/Character/MainCharacter";
     public GameObject curPlayerObj;
 
     //玩家在real world y轴的走动范围
@@ -42,8 +41,7 @@ public class PlayerMgr : Singleton<PlayerMgr>
     //开始游戏时调用，根据需求实现，需要在Battle.StartBattle()中调用
     public void StartBattle()
     {
-        // PlacePlayer(new Vector2(0, -1.5f)); // 默认位置
-        // Debug.Log("战斗开始，玩家已放置在默认位置 (0, -1.5)");
+        
     }
 
     //Update函数，根据需求实现，需要在Launch.Update()中调用

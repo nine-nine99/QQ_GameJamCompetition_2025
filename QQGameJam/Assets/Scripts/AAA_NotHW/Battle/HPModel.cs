@@ -10,6 +10,8 @@ public class HPModel : MonoBehaviour
         set
         {
             hp = value;
+            if (hp >= MaxHP)
+                hp = MaxHP;
         }
         get
         {
@@ -32,6 +34,17 @@ public class HPModel : MonoBehaviour
     {
         int change = (int)data[0];
         hp += change;
+
+        // TODO:这里以后要修正
+        if (hp <= 0)
+        {
+            hp = 0;
+            if (BGMController.Instance.isBegin)
+            {
+                // 发出音游结束的命令
+                Send.SendMsg(SendType.MusicBattleEnd, true);
+            }
+        }
         Debug.Log(HP);
     }
 }

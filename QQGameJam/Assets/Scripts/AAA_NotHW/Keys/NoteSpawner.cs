@@ -20,7 +20,7 @@ public class NoteSpawner : Singleton<NoteSpawner>
     public void SpawnNote(SyllableDetail data)
     {
         // 根据音节细节生成音符
-        int laneNum = data.positionIndex; // 假设 positionIndex 从 0 开始
+        int laneNum = data.positionIndex - 1; // 假设 positionIndex 从 0 开始
 
         if (laneNum < 0 || laneNum >= spawnPoints.Count)
         {

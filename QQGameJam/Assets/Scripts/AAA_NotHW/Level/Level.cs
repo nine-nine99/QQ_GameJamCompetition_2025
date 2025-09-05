@@ -8,10 +8,9 @@ public class Level : MonoBehaviour
 {
     public GameObject musicBattleScene; // 音乐战斗预制体
     public List<Transform> spawnPoints; // 音符生成点
+    [SerializeField]
     private List<IPart> parts = new List<IPart>();
     public Part_Real realPart;
-
-    private IPart curPart;
     private void OnEnable()
     {
         IniMsg();
@@ -34,23 +33,8 @@ public class Level : MonoBehaviour
         if (realPart != null)
             realPart.gameObject.SetActive(false);
 
+        // 初始化NoteSpawner
         NoteSpawner.Instance.InitNoteSpawn(spawnPoints);
-
-        if (LevelMgr.Instance.CurrentLevel == -1)
-        {
-            Send.SendMsg(SendType.Into_Conversation, 0);
-
-            DialogueMgr.Instance.onDialogueEnd += () =>
-            {
-                Debug.Log("对话0结束，生成玩家 + 显示 Part_Real");
-
-                if (realPart != null)
-                {
-                    realPart.gameObject.SetActive(true);
-                    realPart.GenPlayer(realPart.PlayerSpawnTransform);
-                }
-            };
-        }
     }
 
 
@@ -74,19 +58,34 @@ public class Level : MonoBehaviour
     }
     public void OnMusicBattleEnd(params object[] objects)
     {
-        EndMusicBattleScene();
+        bool isFail = (bool)objects[0];
+        EndMusicBattleScene(isFail);
     }
 
     public void OnConversationOver(params object[] data)
     {
         int index = (int)data[0];
         // Debug.Log(index);
-        if (index == 0) return;
-        if (index == 1) // 当是index为1的对话结束
+        if (index == 0)
+        {
+            Debug.Log("对话0结束，生成玩家 + 显示 Part_Real");
+
+            if (realPart != null)
+            {
+                realPart.gameObject.SetActive(true);
+                realPart.GenPlayer(realPart.PlayerSpawnTransform);
+            }
+            return;
+        }
+        if (index == 2) // 当是index为2的对话结束
         {
             // 处理对话结束的逻辑
             // LevelMgr.Instance.StartMusicBattleScene(musicBattleScene); // 开始音乐战斗
             StartMusicBattleScene(musicBattleScene);
+        }
+        if (index == 3 || index == 4)
+        {
+            ChangePart(1);
         }
     }
 
@@ -104,18 +103,14 @@ public class Level : MonoBehaviour
 
     public void ChangePart(int index)
     {
-        if (index < 0 || index >= parts.Count)
+        if (index < 0 || index > parts.Count)
         {
             Debug.LogError("Index out of range: " + index);
+            Debug.Log(parts.Count);
             return;
         }
 
-        if (curPart != null)
-        {
-            curPart.OnExit(); // 退出当前部分
-        }
-        curPart = parts[index];
-        curPart.OnEnter();
+        PartManager.Instance.SwitchTo(parts[index]);
     }
     /// <summary>
     /// 音游战斗开始
@@ -124,18 +119,20 @@ public class Level : MonoBehaviour
     {
         BattleMgr.Instance.state = BattleState.MusicBattle;
 
+        PartManager.Instance.currentPart.OnExit();
+
         musicBattleScene = curMBattleScene;
         musicBattleScene.SetActive(true); // 激活音乐战斗场景
 
         // 设置摄像机的位置
-        CameraMgr.Instance.transform.position = musicBattleScene.transform.position + new Vector3(0,0,-10); // 确保摄像机在正确位置
+        CameraMgr.Instance.transform.position = musicBattleScene.transform.position + new Vector3(0, 0, -10); // 确保摄像机在正确位置
         CameraMgr.Instance.target = musicBattleScene.transform;
 
-        BGMController.Instance.StartBGM(); // 开始背景音乐
+        BGMController.Instance.StartBGMBattle(); // 开始背景音乐
         Debug.Log("音乐战斗开始");
     }
 
-    public void EndMusicBattleScene()
+    public void EndMusicBattleScene(bool isFail)
     {
         Debug.Log("音乐战斗结束");
         BattleMgr.Instance.state = BattleState.Game;
@@ -143,7 +140,10 @@ public class Level : MonoBehaviour
         musicBattleScene.SetActive(false); // 停用音乐战斗场景
 
         ChangePart(0);
-        Send.SendMsg(SendType.Into_Conversation, 2);
+        if (isFail)
+            Send.SendMsg(SendType.Into_Conversation, 4);
+        else
+            Send.SendMsg(SendType.Into_Conversation, 3);
     }
 
 }

@@ -20,8 +20,7 @@ public class DialogueMgr : SingletonMonoBehavior<DialogueMgr>
 
     private void Update()
     {
-        Send.SendMsg(SendType.Over_Conversation, curIndex);
-        // isDialogueEnd = false;
+
     }
 
     public void OnIntoConversation(params object[] data)
@@ -63,7 +62,8 @@ public class DialogueMgr : SingletonMonoBehavior<DialogueMgr>
         }
 
         // 通知监听者（比如 InteractableItemController）
-        onDialogueEnd?.Invoke();
+        // onDialogueEnd?.Invoke();
+        Send.SendMsg(SendType.Over_Conversation, curIndex);
     }
 
     public void CloseDialogue(int index)

@@ -20,7 +20,7 @@ public class MainCharacterFSM : BaseFSM
         currentState.OnEnter();
     }
 
-    private void Update()
+    public override void Update()
     {
         // 保持状态机的更新
         if (currentState != null)

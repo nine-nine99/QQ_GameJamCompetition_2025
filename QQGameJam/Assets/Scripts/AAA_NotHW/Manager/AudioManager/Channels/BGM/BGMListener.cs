@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,10 +10,8 @@ public class BGMListener : SingletonMonoBehavior<BGMListener>
     {
         if (IsFinished())
         {
-            Debug.Log("is Finish");
-            Send.SendMsg(SendType.MusicBattleEnd);
-            // DialogueMgr.Instance.OpenDialogue(1);
-            // GameStateMgr.Instance.SwitchState(GameState.Main);
+            // NOTE:这里是音乐战斗结束的地方
+            Send.SendMsg(SendType.MusicBattleEnd, false);
         }
     }
     // 获取当前播放时间（秒）
@@ -29,6 +28,6 @@ public class BGMListener : SingletonMonoBehavior<BGMListener>
     // 检查是否播放完毕
     public bool IsFinished()
     {
-        return !audioSource.isPlaying && audioSource.time >= audioSource.clip.length;
+        return !audioSource.isPlaying && audioSource.time >= audioSource.clip.length && BGMController.Instance.isBegin == true;
     }
 }
