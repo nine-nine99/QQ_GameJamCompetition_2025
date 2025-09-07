@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47f44e51f27735d4983c2fb03a5194c8, type: 3}
+  m_Name: Dialogue_1000
+  m_EditorClassIdentifier: 
+  lineDetails:
+  - index: 1
+    BGID: 1000
+    CharactorID_0: 1001
+    CharactorID_1: 1002
+    txt_name: bil
+    txt_dialogue: XXXXXXXXXXX
+  - index: 2
+    BGID: 1000
+    CharactorID_0: 1001
+    CharactorID_1: 1002
+    txt_name: aaa
+    txt_dialogue: AAAAAAAAAA
+  - index: 3
+    BGID: 1000
+    CharactorID_0: 1001
+    CharactorID_1: 1002
+    txt_name: bil
+    txt_dialogue: XXXXXXXXXXX
+  - index: 4
+    BGID: 1000
+    CharactorID_0: 1001
+    CharactorID_1: 1002
+    txt_name: aaa
+    txt_dialogue: AAAAAAAAAA
+  - index: 5
+    BGID: 1000
+    CharactorID_0: 1001
+    CharactorID_1: 1002
+    txt_name: bil
+    txt_dialogue: XXXXXXXXXXX

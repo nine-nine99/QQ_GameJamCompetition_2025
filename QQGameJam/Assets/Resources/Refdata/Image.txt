@@ -1,0 +1,9 @@
+ͼƬID	ͼƬ·��
+ID	Path
+1000	Resources/Atlas/Image/scene_1000
+1001	Resources/Atlas/Image/MCharacter_01_1001
+1002	Resources/Atlas/Image/Boss1_01_1002
+1003	Resources/Atlas/Image/Boss1_02_1002
+1004	Resources/Atlas/Image/Boss1_03_1002
+1005	Resources/Atlas/Image/Boss1_04_1002
+1006	Resources/Atlas/Image/Boss1_05_1002
