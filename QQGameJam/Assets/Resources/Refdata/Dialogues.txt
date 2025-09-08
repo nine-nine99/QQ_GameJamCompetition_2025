@@ -1,0 +1,10 @@
+ID	对话SO文件地址	描述
+ID	Path	Desc
+1000	Resources/Dialogue/Dialogue_1000	1
+1001	Resources/Dialogue/Dialogue_1001	2
+1002	Resources/Dialogue/Dialogue_1002	3
+1003	Resources/Dialogue/Dialogue_1003	4
+1004	Resources/Dialogue/Dialogue_1004	5
+1005	Resources/Dialogue/Dialogue_1005	6
+1006	Resources/Dialogue/Dialogue_1006	7
+1007	Resources/Dialogue/Dialogue_1007	8

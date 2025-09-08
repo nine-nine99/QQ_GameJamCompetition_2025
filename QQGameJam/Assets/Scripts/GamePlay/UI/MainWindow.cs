@@ -9,7 +9,7 @@ public class MainWindow : BaseWindowWrapper<MainWindow>
     private Transform fadePanel;
     private Transform openPanel;
     public Button btnStart;
-
+    public int ID_Dialogue;  // 开始对话SO的ID = 1000
     protected override void InitCtrl()
     {
         fadePanel = gameObject.GetChildControl<Transform>("fadePanel");
@@ -40,9 +40,11 @@ public class MainWindow : BaseWindowWrapper<MainWindow>
 
     private void OnBtnStart()
     {
-        Send.SendMsg(SendType.MenuSlotClick, 1);
-
-        Send.SendMsg(SendType.Into_Conversation, 0);
+        // BAN:弃用
+        // Send.SendMsg(SendType.Into_Conversation, 0);
+        // 开启对话框
+        // 提供方法，当对话结束时触发关卡生成事件
+        DialogueCtrl.Instance.OpenDialogueScene(ID_Dialogue, () => Send.SendMsg(SendType.MenuSlotClick, 1));
     }
 
     private IEnumerator StartPanelAnimation()

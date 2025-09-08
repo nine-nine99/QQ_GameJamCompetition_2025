@@ -1,0 +1,3 @@
+ID	谱面SO文件地址	描述
+ID	Path	Desc
+1000	Resources/Syllable/Melody_1000	1

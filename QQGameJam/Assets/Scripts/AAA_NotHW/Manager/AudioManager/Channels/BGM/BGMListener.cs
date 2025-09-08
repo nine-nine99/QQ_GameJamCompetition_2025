@@ -3,17 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 当前曲子的数据
 public class BGMListener : SingletonMonoBehavior<BGMListener>
 {
     private AudioSource audioSource => transform.GetComponent<AudioSource>();
-    void Update()
-    {
-        if (IsFinished())
-        {
-            // NOTE:这里是音乐战斗结束的地方
-            Send.SendMsg(SendType.MusicBattleEnd, false);
-        }
-    }
+
     // 获取当前播放时间（秒）
     public float GetCurrentTime()
     {
@@ -28,6 +22,6 @@ public class BGMListener : SingletonMonoBehavior<BGMListener>
     // 检查是否播放完毕
     public bool IsFinished()
     {
-        return !audioSource.isPlaying && audioSource.time >= audioSource.clip.length && BGMController.Instance.isBegin == true;
+        return !audioSource.isPlaying && audioSource.time >= audioSource.clip.length && BGMController.Instance.bgmBattleStart == true;
     }
 }

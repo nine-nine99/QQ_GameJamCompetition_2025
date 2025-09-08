@@ -32,7 +32,7 @@ public class BattleMgr : Singleton<BattleMgr>
     public void OnMenuSlotClick(params object[] objects)
     {
         GameStateMgr.Instance.SwitchState(GameState.Battle);
-        // 根据槽索引执行相应的逻辑
+        // NOTE:触发关卡生成的地方
         LevelMgr.Instance.CurrentLevel = (int)objects[0]; // 假设槽索引对应关卡，同时会触发关卡生成
     }
     public void StartBattle()

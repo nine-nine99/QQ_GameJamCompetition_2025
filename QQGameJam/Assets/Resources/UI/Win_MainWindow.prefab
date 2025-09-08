@@ -78,6 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasOpen: 0
   btnStart: {fileID: 2961180120604704016}
+  ID_Dialogue: 1000
 --- !u!1 &263290691399338102
 GameObject:
   m_ObjectHideFlags: 0

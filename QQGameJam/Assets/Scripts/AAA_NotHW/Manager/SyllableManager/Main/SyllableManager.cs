@@ -4,47 +4,41 @@ using UnityEngine;
 
 public class SyllableManager : SingletonMonoBehavior<SyllableManager>
 {
-    public SyllableData_SO syllableData; // 音节数据
+    public SyllableData_SO mSyllableData; // 音节数据
     private float arrivalTime = 0;
     private float duration = 0;
     private float actualTime = 0;
     private int index = 0;
-    private bool isPlaying = false;
     private float currentTime => BGMListener.Instance.GetCurrentTime();
-    private SyllableDetail currentDetail = null;
+    private SyllableDetail currentDetail;   // 当前音节数据
 
     void Update()
     {
-        if (isPlaying == true)
-        {
-            SongNodeStartIni();
-        }
+        GenerateNode();
     }
-    // 当歌曲开始播放的时候的函数
-    public void OnMusicStart()
+
+    // 当歌曲开始播放初始化谱面数据
+    public void BGMBattle_InitSyllableData(SyllableData_SO CurData)
     {
-        // 在这里处理音节的播放
-        if (syllableData == null || syllableData.datas == null || syllableData.datas.Count == 0)
-        {
-            return;
-        }
         index = 0;
-        isPlaying = true;
+
+        mSyllableData = CurData;
+
+        currentDetail = null;
     }
-    public void SongNodeStartIni()
+
+    private void GenerateNode()
     {
-        if (index >= syllableData.datas.Count)
-        {
-            isPlaying = false; // 如果索引超出范围，退出循环
-            return;
-        }
+        if (mSyllableData == null) return;
+        if (index >= mSyllableData.datas.Count) return;
+
+        // 战斗开始时初始化音节管理器
         if (currentDetail == null)
         {
-            currentDetail = syllableData.datas[index];
+            currentDetail = mSyllableData.datas[index];
 
             if (currentDetail == null)
             {
-                isPlaying = false;
                 Debug.Log("出现错误");
                 return;
             }
@@ -56,6 +50,7 @@ public class SyllableManager : SingletonMonoBehavior<SyllableManager>
             actualTime = arrivalTime - duration;
         }
 
+        // 到达具体音节时间时生成音节
         if (currentTime >= actualTime)
         {
             // 在这里处理音节的播放逻辑
@@ -63,13 +58,15 @@ public class SyllableManager : SingletonMonoBehavior<SyllableManager>
             NoteSpawner.Instance.SpawnNote(currentDetail);
 
             index++;
-            currentDetail = null;
-        }
-        if (currentTime >= BGMListener.Instance.GetTotalLength())
-        {
 
             currentDetail = null;
-            // 乐曲播放结束了
+        }
+
+        // 当音节生成结束时
+        if (index >= mSyllableData.datas.Count || currentTime >= BGMListener.Instance.GetTotalLength())
+        {
+            currentDetail = null;
+            return;
         }
     }
 }

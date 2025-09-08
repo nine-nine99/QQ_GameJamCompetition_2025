@@ -31,8 +31,6 @@ public enum SendType
     MenuSlotClick,
     LevelChange,
     MusicBattleEnd,
-    Into_InsideWorld,
-    Into_MusicBattle,
     Into_Conversation,
     Over_Conversation,
     HPChange

@@ -5,7 +5,7 @@ using UnityEngine;
 public class BGMController : SingletonMonoBehavior<BGMController>
 {
     public AudioSource bgm => GetComponent<AudioSource>();
-    public bool isBegin = false;
+    public bool bgmBattleStart = false;
 
     private void OnEnable()
     {
@@ -17,45 +17,66 @@ public class BGMController : SingletonMonoBehavior<BGMController>
 
     }
 
-    private void OnMusicBattleEnd(params object[] objects)
+    void Update()
     {
-        isBegin = false;
-        EndBGMBattle();
+        if (bgmBattleStart == true)
+        {
+            // 监听战斗是否结束
+            if (BGMListener.Instance.IsFinished())
+            {
+                // NOTE:这里是音乐战斗结束的地方，成功状态下
+                Send.SendMsg(SendType.MusicBattleEnd, false);
+                // OnMusicBattleEnd();
+            }
+        }
     }
-
-    // TODO:暂时的
     // 游戏具体音游战斗开始
-    public void StartBGMBattle()
+    public void Start_BGMBattle(int ID)
     {
         // 开始播放
-        if (bgm.clip == null)
-        {
-            Debug.LogWarning("BGM Clip 为空");
-            return;
-        }
+        InitBGMBattle_Data(ID);
+
         if (!bgm.isPlaying)
         {
-            // 挂载clip
-            bgm.clip = SyllableManager.Instance.syllableData.audioClip;
-            // 启动音节乐谱脚本
-            SyllableManager.Instance.OnMusicStart();
             // 开始播放
             bgm.Play();
-            isBegin = true;
+            bgmBattleStart = true;
         }
         else
         {
             // 已经在播放时
         }
     }
+    private void OnMusicBattleEnd(params object[] objects)
+    {
+        End_BGMBattle();
+    }
 
     // 游戏音游战斗结束
-    public void EndBGMBattle()
+    public void End_BGMBattle()
     {
         if (bgm.isPlaying)
         {
             bgm.Stop();
-            isBegin = false;
+            bgmBattleStart = false;
         }
+    }
+
+    /// <summary>
+    /// 当前谱面总数据初始化
+    /// </summary>
+    /// <param name="SyllableData_ID">谱面数据ID</param>
+    public void InitBGMBattle_Data(int SyllableData_ID)
+    {
+        bgmBattleStart = true;
+
+        // 通过ID获取当前的铺面数据
+        SyllableData_SO syllableData_SO = RefSyllableDatas.GetSyllableData_SOByID(SyllableData_ID);
+        Debug.Log("XXXXXXXX " + SyllableData_ID);
+        // 初始化音节乐谱脚本
+        SyllableManager.Instance.BGMBattle_InitSyllableData(syllableData_SO);
+
+        // 挂载clip
+        bgm.clip = SyllableManager.Instance.mSyllableData.audioClip;
     }
 }

@@ -21,6 +21,8 @@ public class RefDataMgr : BaseRefDataMgr<RefDataMgr>
             Co_LoadGeneric(RefSign.cacheMap),
             Co_LoadGeneric(RefTask.cacheMap),
             Co_LoadGeneric(RefImage.cacheMap),
+            Co_LoadGeneric(RefDialogues.cacheMap),
+            Co_LoadGeneric(RefSyllableDatas.cacheMap),
         };
         for (int index = 0, total = co_list.Count; index < total; index++)
         {
@@ -39,5 +41,7 @@ public class RefDataMgr : BaseRefDataMgr<RefDataMgr>
         LoadGeneric(RefSign.cacheMap);
         LoadGeneric(RefTask.cacheMap);
         LoadGeneric(RefImage.cacheMap);
+        LoadGeneric(RefDialogues.cacheMap);
+        LoadGeneric(RefSyllableDatas.cacheMap);
     }
 }

@@ -6,11 +6,14 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
+    [Header("初始动画")]
     public GameObject musicBattleScene; // 音乐战斗预制体
     public List<Transform> spawnPoints; // 音符生成点
     [SerializeField]
     private List<IPart> parts = new List<IPart>();
-    public Part_Real realPart;
+
+    public int CurFailDialogue_ID;
+    public int CurFinishDialogue_ID;
     private void OnEnable()
     {
         IniMsg();
@@ -21,84 +24,34 @@ public class Level : MonoBehaviour
     {
         ClearMsg();
     }
+
+    /// <summary>
+    /// 每次加载一个新Level时调用，不是Part
+    /// </summary>
     public void Init()
     {
         parts.Clear();
         parts = GetComponentsInChildren<IPart>(true).ToList();
         Debug.Log(parts.Count);
 
-        ChangePart(0);
+        ChangePart(0);  // Part初始化为第一个
 
-        // 开始时隐藏 Part_Real
-        if (realPart != null)
-            realPart.gameObject.SetActive(false);
-
-        // 初始化NoteSpawner
+        // 初始化当前场景中的NoteSpawner
         NoteSpawner.Instance.InitNoteSpawn(spawnPoints);
     }
 
-
-
-
     private void IniMsg()
     {
-        Send.RegisterMsg(SendType.Into_InsideWorld, OnIntoInsideWorld);
-        Send.RegisterMsg(SendType.Over_Conversation, OnConversationOver);
         Send.RegisterMsg(SendType.MusicBattleEnd, OnMusicBattleEnd);
-
-        // Send.RegisterMsg(SendType.Into_MusicBattle, OnMusicBattle);
     }
     private void ClearMsg()
     {
-        Send.UnregisterMsg(SendType.Into_InsideWorld, OnIntoInsideWorld);
-        Send.UnregisterMsg(SendType.Over_Conversation, OnConversationOver);
         Send.UnregisterMsg(SendType.MusicBattleEnd, OnMusicBattleEnd);
-
-        // Send.UnregisterMsg(SendType.Into_MusicBattle, OnMusicBattle);
     }
     public void OnMusicBattleEnd(params object[] objects)
     {
         bool isFail = (bool)objects[0];
         EndMusicBattleScene(isFail);
-    }
-
-    public void OnConversationOver(params object[] data)
-    {
-        int index = (int)data[0];
-        // Debug.Log(index);
-        if (index == 0)
-        {
-            Debug.Log("对话0结束，生成玩家 + 显示 Part_Real");
-
-            if (realPart != null)
-            {
-                realPart.gameObject.SetActive(true);
-                realPart.GenPlayer(realPart.PlayerSpawnTransform);
-            }
-            return;
-        }
-        if (index == 2) // 当是index为2的对话结束
-        {
-            // 处理对话结束的逻辑
-            // LevelMgr.Instance.StartMusicBattleScene(musicBattleScene); // 开始音乐战斗
-            StartMusicBattleScene(musicBattleScene);
-        }
-        if (index == 3 || index == 4)
-        {
-            ChangePart(1);
-        }
-    }
-
-    public void OnIntoInsideWorld(params object[] data)
-    {
-        int key = (int)data[0];
-        if (key < 0 || key >= parts.Count)
-        {
-            Debug.LogError("Invalid key: " + key);
-            return;
-        }
-
-        ChangePart(key);
     }
 
     public void ChangePart(int index)
@@ -112,23 +65,30 @@ public class Level : MonoBehaviour
 
         PartManager.Instance.SwitchTo(parts[index]);
     }
+
     /// <summary>
-    /// 音游战斗开始
+    /// 当战斗开始时
     /// </summary>
-    public void StartMusicBattleScene(GameObject curMBattleScene)
+    /// <param name="battleID">战斗数据ID</param>
+    /// <param name="battleFailDialogue_ID">战斗失败时对话的ID</param>
+    /// <param name="battleFinishDialogue_ID">战斗成功时对话的ID</param>
+    public void StartMusicBattleScene(int battleID, int battleFailDialogue_ID, int battleFinishDialogue_ID)
     {
         BattleMgr.Instance.state = BattleState.MusicBattle;
 
         PartManager.Instance.currentPart.OnExit();
 
-        musicBattleScene = curMBattleScene;
         musicBattleScene.SetActive(true); // 激活音乐战斗场景
 
-        // 设置摄像机的位置
+        // 设置场景中摄像机的位置
         CameraMgr.Instance.transform.position = musicBattleScene.transform.position + new Vector3(0, 0, -10); // 确保摄像机在正确位置
         CameraMgr.Instance.target = musicBattleScene.transform;
 
-        BGMController.Instance.StartBGMBattle(); // 开始背景音乐
+        BGMController.Instance.Start_BGMBattle(battleID); // 开始战斗
+
+        CurFailDialogue_ID = battleFailDialogue_ID;
+        CurFinishDialogue_ID = battleFinishDialogue_ID;
+
         Debug.Log("音乐战斗开始");
     }
 
@@ -139,11 +99,21 @@ public class Level : MonoBehaviour
         BattleWindow.Instance.ShowScenePanel();
         musicBattleScene.SetActive(false); // 停用音乐战斗场景
 
-        ChangePart(0);
+        // ChangePart(0);  // 回到开始世界
+
+        // if (isFail)
+        //     Send.SendMsg(SendType.Into_Conversation, 4);
+        // else
+        //     Send.SendMsg(SendType.Into_Conversation, 3);
         if (isFail)
-            Send.SendMsg(SendType.Into_Conversation, 4);
+        {
+            // Send.SendMsg(SendType.Into_Conversation, 4);
+            DialogueCtrl.Instance.OpenDialogueScene(CurFailDialogue_ID, () => ChangePart(1));
+        }
         else
-            Send.SendMsg(SendType.Into_Conversation, 3);
+        {
+            DialogueCtrl.Instance.OpenDialogueScene(CurFinishDialogue_ID, () => ChangePart(1));
+        }
     }
 
 }

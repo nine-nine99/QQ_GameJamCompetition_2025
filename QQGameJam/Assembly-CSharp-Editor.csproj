@@ -484,6 +484,10 @@
       <HintPath>Assets\3rdPlugin\Demigiant\DOTween\DOTween.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Kybernetik.Animancer.Lite">
+      <HintPath>Packages\com.kybernetik.animancer\Runtime\Utilities\Animancer Lite\Animancer Lite Editor\Kybernetik.Animancer.Lite.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="DOTween46">
       <HintPath>Assets\3rdPlugin\Demigiant\DOTween\DOTween46.dll</HintPath>
       <Private>False</Private>
@@ -1135,8 +1139,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj" />
+    <ProjectReference Include="Kybernetik.Animancer.FSM.csproj" />
+    <ProjectReference Include="Kybernetik.Animancer.Editor.csproj" />
     <ProjectReference Include="Tools.csproj" />
     <ProjectReference Include="CodeTool.csproj" />
+    <ProjectReference Include="Kybernetik.Animancer.csproj" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <ItemGroup>

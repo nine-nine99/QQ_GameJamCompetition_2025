@@ -16,35 +16,32 @@ public class InteractableItemController : MonoBehaviour
     public float width;
     public float height;
 
-    [Header("物品的属性")]
-    public bool isTransItem = false;
     public Item item;
     [Header("要跳转到的Part")]
     public int partID;
     [Header("要进入的战斗的ID")]
     public int battleID;
+    [Header("进入战斗对话SO的ID")]
+    public int BattleIntoDialogue_ID;  // 开始对话SO的ID = 1000
+    [Header("战斗失败时对话数据ID")]
+    public int battleFailDialogue_ID;
+    [Header("战斗成功时对话数据ID")]
+    public int battleFinishDialogue_ID;
+
+
+    private void Start()
+    {
+        CloseItem();
+    }
+
     void OnMouseEnter()
     {
-        originItem.SetActive(false);
-        zoomedItem.SetActive(true);
+        OpenItem();
     }
 
     void OnMouseExit()
     {
-        originItem.SetActive(true);
-        zoomedItem.SetActive(false);
-    }
-
-    public void Init()
-    {
-        originItem.SetActive(true);
-        zoomedItem.SetActive(false);
-    }
-
-    public void Clear()
-    {
-        originItem.SetActive(true);
-        zoomedItem.SetActive(false);
+        CloseItem();
     }
 
     // 鼠标点击时调用
@@ -77,17 +74,38 @@ public class InteractableItemController : MonoBehaviour
     {
         if (item != Item.tran) return;
 
-        Clear();
+        CloseItem();
+        // DialogueCtrl.Instance.FadeOut(() =>
+        // {
+        //     mLevel.ChangePart(partIndex);   // 进入里世界
 
-        mLevel.ChangePart(partIndex);   // 进入里世界
+        //     // 然后淡入新场景
+        //     DialogueCtrl.Instance.FadeIn();
+        // });
+        // 进入里世界,然后淡入新场景
+        DialogueCtrl.Instance.ChangeSceneWithFade(() => mLevel.ChangePart(partIndex));
+
     }
 
     private void battleItem()
     {
         if (item != Item.battle) return;
+        DialogueCtrl.Instance.OpenDialogueScene(BattleIntoDialogue_ID, () => mLevel.StartMusicBattleScene(battleID, battleFailDialogue_ID, battleFinishDialogue_ID));
+        // BAN:弃用
+        // Send.SendMsg(SendType.Into_Conversation, 2); // 发送消息，准备进入音乐战斗
 
-        Send.SendMsg(SendType.Into_Conversation, 2); // 发送消息，准备进入音乐战斗
+        CloseItem();
+    }
 
-        Clear();
+    public void OpenItem()
+    {
+        originItem.SetActive(false);
+        zoomedItem.SetActive(true);
+    }
+
+    public void CloseItem()
+    {
+        originItem.SetActive(true);
+        zoomedItem.SetActive(false);
     }
 }

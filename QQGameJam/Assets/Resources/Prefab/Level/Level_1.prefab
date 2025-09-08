@@ -870,7 +870,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5783747351682875272
 Transform:
   m_ObjectHideFlags: 0
@@ -2364,7 +2364,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1834274311012952364
 Transform:
   m_ObjectHideFlags: 0
@@ -3040,7 +3040,8 @@ MonoBehaviour:
   - {fileID: 2186926834716438953}
   - {fileID: 418880787994024085}
   - {fileID: 4128284440279748914}
-  realPart: {fileID: 296000378676081686}
+  CurFailDialogue_ID: 0
+  CurFinishDialogue_ID: 0
 --- !u!1 &7275900898044535223
 GameObject:
   m_ObjectHideFlags: 0
@@ -4388,6 +4389,22 @@ PrefabInstance:
     - target: {fileID: 751200605174790290, guid: c7a51527d29d11b4db08061d871f45bd, type: 3}
       propertyPath: itemId
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 751200605174790290, guid: c7a51527d29d11b4db08061d871f45bd, type: 3}
+      propertyPath: battleID
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 751200605174790290, guid: c7a51527d29d11b4db08061d871f45bd, type: 3}
+      propertyPath: BattleIntoDialogue_ID
+      value: 1001
+      objectReference: {fileID: 0}
+    - target: {fileID: 751200605174790290, guid: c7a51527d29d11b4db08061d871f45bd, type: 3}
+      propertyPath: battleFailDialogue_ID
+      value: 1002
+      objectReference: {fileID: 0}
+    - target: {fileID: 751200605174790290, guid: c7a51527d29d11b4db08061d871f45bd, type: 3}
+      propertyPath: battleFinishDialogue_ID
+      value: 1003
       objectReference: {fileID: 0}
     - target: {fileID: 4592307409354714983, guid: c7a51527d29d11b4db08061d871f45bd, type: 3}
       propertyPath: m_Sprite

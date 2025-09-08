@@ -91,8 +91,8 @@
     <Compile Include="Assets\Scripts\Engine\Base\Singleton.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Manager\DialogueMgr\Csv\Csv2DialogueData.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Logic\ScoreMgr.cs" />
-    <Compile Include="Assets\3rdPlugin\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Battle\HP\HPBarControl.cs" />
+    <Compile Include="Assets\3rdPlugin\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Part\Part_Real.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Proxy\ItemInfoView.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Battle\HP\HPModel.cs" />
@@ -124,6 +124,7 @@
     <Compile Include="Assets\Scripts\AAA_NotHW\Manager\AudioManager\Data\Csv2SOData\CsvDataTest.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Character\FSM\MainCharacterFSM\IdleState_MainCharacter.cs" />
     <Compile Include="Assets\Scripts\Engine\RefData\RefDataMgr.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\RefData\RefSyllableDatas.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Character\FSM\MainCharacterFSM\RunState_MainCharacter.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Logic\CurrencyMgr.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Manager\AudioManager\Main\AudioManager.cs" />
@@ -166,6 +167,7 @@
     <Compile Include="Assets\Scripts\AAA_NotHW\Keys\NoteSpawner.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Logic\SignMgr.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Manager\DialogueMgr\Ctrl\DialogueCtrl.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\RefData\RefDialogues.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Manager\AudioManager\Channels\BGM\BGMListener.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Level\Level.cs" />
   </ItemGroup>
@@ -195,6 +197,7 @@
     <None Include="Assets\Art\Animation\动画目录.txt" />
     <None Include="Assets\Art\Atlas\UI\图片目录.txt" />
     <None Include="Assets\Resources\Refdata\Image.txt" />
+    <None Include="Assets\Resources\Refdata\Dialogues.txt" />
     <None Include="Assets\Art\Prefab\预制体目录.txt" />
     <None Include="Assets\Scripts\Engine\框架根目录.txt" />
     <None Include="Assets\Scripts\GamePlay\Battle\战斗相关的类.txt" />
@@ -229,6 +232,7 @@
     <None Include="Assets\Scripts\Engine\Base\基础库 游戏默认加载 必须可单独存在.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\3rdPlugin\Demigiant\DOTween\readme.txt" />
+    <None Include="Assets\Resources\Refdata\SyllableDatas.txt" />
     <None Include="Assets\Scripts\GamePlay\Logic\模块功能目录.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\Scripts\代码根目录.txt" />
@@ -588,6 +592,10 @@
       <HintPath>Assets\3rdPlugin\Demigiant\DOTween\DOTween.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Kybernetik.Animancer.Lite">
+      <HintPath>Packages\com.kybernetik.animancer\Runtime\Utilities\Animancer Lite\Animancer Lite Editor\Kybernetik.Animancer.Lite.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="DOTween46">
       <HintPath>Assets\3rdPlugin\Demigiant\DOTween\DOTween46.dll</HintPath>
       <Private>False</Private>
@@ -602,10 +610,6 @@
     </Reference>
     <Reference Include="DOTween50">
       <HintPath>Assets\3rdPlugin\Demigiant\DOTween\DOTween50.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Kybernetik.Animancer.Lite">
-      <HintPath>Packages\com.kybernetik.animancer\Runtime\Utilities\Animancer Lite\Animancer Lite Editor\Kybernetik.Animancer.Lite.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">

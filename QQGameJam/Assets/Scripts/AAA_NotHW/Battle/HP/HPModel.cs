@@ -9,9 +9,17 @@ public class HPModel : MonoBehaviour
     {
         set
         {
-            hp = value;
-            if (hp >= MaxHP)
+            if (value >= MaxHP)
+            {
                 hp = MaxHP;
+                return;
+            }
+            if (value < 0)
+            {
+                hp = 0;
+                return;
+            }
+            hp = value;
         }
         get
         {
@@ -33,16 +41,16 @@ public class HPModel : MonoBehaviour
     private void OnHPChange(params object[] data)
     {
         int change = (int)data[0];
-        hp += change;
+        
+        HP += change;
 
-        // TODO:这里以后要修正
-        if (hp <= 0)
+        if (HP <= 0)
         {
-            hp = 0;
-            if (BGMController.Instance.isBegin)
+            if (BGMController.Instance.bgmBattleStart)
             {
                 // 发出音游结束的命令
                 Send.SendMsg(SendType.MusicBattleEnd, true);
+                return;
             }
         }
         Debug.Log(HP);
