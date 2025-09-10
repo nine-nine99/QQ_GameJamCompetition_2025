@@ -62,7 +62,7 @@ public class RefImage : RefBase
             Debug.LogError($"Failed to load sprite from path: {refData.Path}");
             return null;
         }
-        Debug.Log($"Successfully loaded sprite: {sprite.name} from path: {refData.Path}");
+        // Debug.Log($"Successfully loaded sprite: {sprite.name} from path: {refData.Path}");
         return sprite;
     }
 }

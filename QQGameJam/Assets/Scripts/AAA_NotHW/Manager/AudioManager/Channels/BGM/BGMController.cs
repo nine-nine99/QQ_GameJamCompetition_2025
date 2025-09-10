@@ -72,9 +72,12 @@ public class BGMController : SingletonMonoBehavior<BGMController>
 
         // 通过ID获取当前的铺面数据
         SyllableData_SO syllableData_SO = RefSyllableDatas.GetSyllableData_SOByID(SyllableData_ID);
-        Debug.Log("XXXXXXXX " + SyllableData_ID);
+        BattleSceneData_SO battleSceneData_SO = RefSyllableDatas.GetBattleSceneData_SOByID(SyllableData_ID);
+
+        Debug.Log("Current SyllableData_ID =  " + SyllableData_ID);
+
         // 初始化音节乐谱脚本
-        SyllableManager.Instance.BGMBattle_InitSyllableData(syllableData_SO);
+        TODO: SyllableManager.Instance.BGMBattle_InitSyllableData(syllableData_SO, battleSceneData_SO);
 
         // 挂载clip
         bgm.clip = SyllableManager.Instance.mSyllableData.audioClip;

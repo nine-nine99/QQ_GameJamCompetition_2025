@@ -9,6 +9,7 @@ public class Level : MonoBehaviour
     [Header("初始动画")]
     public GameObject musicBattleScene; // 音乐战斗预制体
     public List<Transform> spawnPoints; // 音符生成点
+    public List<Transform> targetPoints; // 音符生成点
     [SerializeField]
     private List<IPart> parts = new List<IPart>();
 
@@ -37,7 +38,7 @@ public class Level : MonoBehaviour
         ChangePart(0);  // Part初始化为第一个
 
         // 初始化当前场景中的NoteSpawner
-        NoteSpawner.Instance.InitNoteSpawn(spawnPoints);
+        NoteSpawner.Instance.InitNoteSpawn(spawnPoints, targetPoints);
     }
 
     private void IniMsg()

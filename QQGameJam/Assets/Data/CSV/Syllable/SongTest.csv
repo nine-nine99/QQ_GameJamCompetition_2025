@@ -1,0 +1,5 @@
+﻿index,positionIndex,showTime_1,endTime_1,showTime_2,endTime_2,syllableType
+1,1,0,1,-1,0,Normal
+2,2,0.2,1.2,-1,0,Normal
+3,2,0.4,1.4,1,2,Hold
+4,3,0.6,1.6,1,2,Hold

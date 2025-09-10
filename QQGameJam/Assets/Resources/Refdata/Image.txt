@@ -1,4 +1,4 @@
-ͼƬID	ͼƬ·��
+图片ID	图片路径
 ID	Path
 1000	Resources/Atlas/Image/scene_1000
 1001	Resources/Atlas/Image/MCharacter_01_1001

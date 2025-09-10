@@ -1,0 +1,5 @@
+动画ID	动画路径	描述
+ID	Path	Desc
+1000	Resources/Atlas/Animation/boss01_1000	
+1001	Resources/Atlas/Animation/boss01_1001	
+1002	Resources/Atlas/Animation/boss01_1002	
