@@ -30,10 +30,12 @@ public class Csv2SyllableData : MonoBehaviour
                 // Health = int.Parse(fields[2].Trim()),
                 // Attack = int.Parse(fields[3].Trim())
                 index = int.Parse(fields[0].Trim()),
-                arrivalTime = float.Parse(fields[1].Trim()),
-                positionIndex = int.Parse(fields[2].Trim()),
-                duration = float.Parse(fields[3].Trim()),
-                syllableType = (SyllableType)Enum.Parse(typeof(SyllableType), fields[4].Trim())
+                positionIndex = int.Parse(fields[1].Trim()),
+                showTime_1 = float.Parse(fields[2].Trim()),
+                endTime_1 = float.Parse(fields[3].Trim()),
+                showTime_2 = float.Parse(fields[4].Trim()),
+                endTime_2 = float.Parse(fields[5].Trim()),
+                syllableType = (SyllableType)Enum.Parse(typeof(SyllableType), fields[6].Trim())
             };
             syllableData.datas.Add(data);
         }

@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\GamePlay\UI\LoadingWindow.cs" />
     <Compile Include="Assets\Scripts\GamePlay\UI\SignWindow.cs" />
     <Compile Include="Assets\Scripts\Engine\UI\HWGraphicRaycaster.cs" />
+    <Compile Include="Assets\Scripts\AAA_NotHW\Manager\BattleSceneCtrl\BattleSceneCtrl.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Character\Melody\MelodyController.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Logic\ShopMgr.cs" />
     <Compile Include="Assets\Scripts\GamePlay\RefData\RefTask.cs" />
@@ -84,13 +85,14 @@
     <Compile Include="Assets\Scripts\Engine\UI\WindowInfo.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Manager\AudioManager\Data\AudioData_SO.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\UI\TimeLineControl.cs" />
-    <Compile Include="Assets\Scripts\AAA_NotHW\Keys\NoteMover.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\UI\SettingControl.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Other\ToolMgr.cs" />
+    <Compile Include="Assets\Scripts\AAA_NotHW\Node\LongNote\LongNote_PartMove.cs" />
     <Compile Include="Assets\Scripts\Engine\UI\UIRootTwoD.cs" />
     <Compile Include="Assets\Scripts\Engine\Base\Singleton.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Manager\DialogueMgr\Csv\Csv2DialogueData.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Logic\ScoreMgr.cs" />
+    <Compile Include="Assets\Scripts\AAA_NotHW\Node\LongPressNote.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Battle\HP\HPBarControl.cs" />
     <Compile Include="Assets\3rdPlugin\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Part\Part_Real.cs" />
@@ -98,14 +100,18 @@
     <Compile Include="Assets\Scripts\AAA_NotHW\Battle\HP\HPModel.cs" />
     <Compile Include="Assets\Scripts\Engine\UI\WindowMgr.cs" />
     <Compile Include="Assets\Scripts\GamePlay\UI\ShopWindow.cs" />
+    <Compile Include="Assets\Scripts\AAA_NotHW\Node\LongNote\LongNote.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\UI\DialoguePlayer.cs" />
     <Compile Include="Assets\Scripts\Engine\Base\Enum.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Logic\GradeMgr.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Other\TimeMgr.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Manager\SyllableManager\Data\SyllableData_SO.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\RefData\RefAnimation.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Part\Part_InsideWorld.cs" />
+    <Compile Include="Assets\Scripts\AAA_NotHW\Node\Effect\NoteEffect.cs" />
     <Compile Include="Assets\Scripts\GamePlay\UI\GameOverWindow.cs" />
     <Compile Include="Assets\Scripts\Engine\Base\CrashCallBack.cs" />
+    <Compile Include="Assets\Scripts\AAA_NotHW\Manager\BattleSceneCtrl\Csv\Csv2BattleSceneData.cs" />
     <Compile Include="Assets\Scripts\GamePlay\UI\MainWindow.cs" />
     <Compile Include="Assets\Scripts\Engine\Tool\PreserveAttribute.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Battle\PlayerMgr.cs" />
@@ -139,6 +145,7 @@
     <Compile Include="Assets\Scripts\Engine\Launch.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Keys\ComboManager.cs" />
     <Compile Include="Assets\Scripts\Engine\RefData\RefBase.cs" />
+    <Compile Include="Assets\Scripts\AAA_NotHW\Node\LongNote\NormalNote.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Character\FSM\BaseFSM\IdleState_Base.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Keys\KeyDetector.cs" />
     <Compile Include="Assets\Scripts\GamePlay\UI\PauseWindow.cs" />
@@ -167,8 +174,10 @@
     <Compile Include="Assets\Scripts\AAA_NotHW\Keys\NoteSpawner.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Logic\SignMgr.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Manager\DialogueMgr\Ctrl\DialogueCtrl.cs" />
+    <Compile Include="Assets\Scripts\AAA_NotHW\Manager\BattleSceneCtrl\Data\BattleSceneData_SO.cs" />
     <Compile Include="Assets\Scripts\GamePlay\RefData\RefDialogues.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Manager\AudioManager\Channels\BGM\BGMListener.cs" />
+    <Compile Include="Assets\Scripts\AAA_NotHW\Node\Base\BaseNote.cs" />
     <Compile Include="Assets\Scripts\AAA_NotHW\Level\Level.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -191,9 +200,11 @@
     <None Include="Assets\3rdPlugin\Demigiant\DOTween\DOTween.XML" />
     <None Include="Assets\Resources\Atlas\UI\图片目录.txt" />
     <None Include="Assets\Resources\Shader\Shader目录.txt" />
+    <None Include="Assets\Resources\Refdata\Animation.txt" />
     <None Include="Assets\Resources\Prefab\预制目录.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Scripts\GamePlay\Other\其他各种功能.txt" />
+    <None Include="Assets\Art\Nykri_UI\GlowEffect_Single\共五张_每秒24帧.txt" />
     <None Include="Assets\Art\Animation\动画目录.txt" />
     <None Include="Assets\Art\Atlas\UI\图片目录.txt" />
     <None Include="Assets\Resources\Refdata\Image.txt" />

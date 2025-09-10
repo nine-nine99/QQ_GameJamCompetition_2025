@@ -14,23 +14,56 @@ public class KeyDetector : MonoBehaviour
     bool hitSomething = false;
 
     public int index;
+    private BaseNote mBaseNote;
+    private LongNote mLongNote; // 当前按住的长音符
     void Update()
     {
         // if (Input.GetKeyDown(key))
         if (SetMenuControl.Instance.IsKeyPressed(index))
         {
             hitSomething = false;
+            mLongNote = null;
             //向上检测
             RaycastHit2D hitUp = Physics2D.Raycast(transform.position, Vector2.up, rayLength, LayerMask.GetMask("Note"));
+            if (hitUp.collider == null) return;
 
-            UpDetect(hitUp);
+            // 获取得到的音符
+            if (hitUp.collider.GetComponent<LongNote_PartMove>() != null)
+            {
+                mBaseNote = hitUp.collider.GetComponent<LongNote_PartMove>().mLongNote;
+                mLongNote = hitUp.collider.GetComponent<LongNote_PartMove>().mLongNote;
+            }
+            else if (hitUp.collider.GetComponent<NormalNote>() != null)
+            {
+                mBaseNote = hitUp.collider.GetComponent<NormalNote>();
+            }
+            else
+            {
+                Debug.LogError("判定线上出问题了");
+            }
 
-            //向下检测
+            UpDetect(hitUp, mBaseNote);
+
+            // 若向上检测没有碰到东西，则向下检测
             if (!hitSomething)
             {
                 RaycastHit2D hitDown = Physics2D.Raycast(transform.position, Vector2.down, rayLength, LayerMask.GetMask("Note"));
-                DownDetect(hitDown);
+                DownDetect(hitDown, mBaseNote);
             }
+        }
+
+        if (mLongNote == null) return;
+        // 按住了
+        if (SetMenuControl.Instance.IsKeyHold(index))
+        {
+            mLongNote.OnHold();
+        }
+
+        // 没按住
+        if (!SetMenuControl.Instance.IsKeyHold(index))
+        {
+            mLongNote.OnLose(mLongNote.headCurSpeed);
+            mLongNote = null;
         }
     }
 
@@ -41,7 +74,7 @@ public class KeyDetector : MonoBehaviour
     }
 
     // 向上检测
-    private void UpDetect(RaycastHit2D hitUp)
+    private void UpDetect(RaycastHit2D hitUp, BaseNote baseNote)
     {
         if (hitUp.collider == null) return;
 
@@ -51,26 +84,33 @@ public class KeyDetector : MonoBehaviour
         {
             Debug.Log("Perfect!");
             ComboManager.Instance.AddCombo();
+            // 触发击中
+            baseNote.OnHit();
         }
         else if (distance <= goodKeyRange)
         {
             Debug.Log("Good!");
             ComboManager.Instance.AddCombo();
+            baseNote.OnHit();
         }
         else if (distance <= badKeyRange)
         {
             ComboManager.Instance.ResetCombo();
+            baseNote.OnHit();
         }
-        else
+        else    // Miss
         {
             ComboManager.Instance.ResetCombo();
+            baseNote.OnHit();
         }
-        ObjectPool.Instance.Recycle(hitUp.collider.gameObject);
+
+        // TODO:整合到BaseNote中去
+        // ObjectPool.Instance.Recycle(hitUp.collider.gameObject);
         hitSomething = true;
 
     }
     // 向下检测
-    private void DownDetect(RaycastHit2D hitDown)
+    private void DownDetect(RaycastHit2D hitDown, BaseNote baseNote)
     {
         if (hitDown.collider == null) return;
 
@@ -81,16 +121,22 @@ public class KeyDetector : MonoBehaviour
             if (distance <= badKeyRange)
             {
                 ComboManager.Instance.ResetCombo();
+                baseNote.OnHit();
+
             }
             else
             {
                 ComboManager.Instance.ResetCombo();
-            }
-            ObjectPool.Instance.Recycle(hitDown.collider.gameObject);
-            hitSomething = true;
+                baseNote.OnHit();
 
+            }
+            // ObjectPool.Instance.Recycle(hitDown.collider.gameObject);
+            hitSomething = true;
         }
     }
+
+
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

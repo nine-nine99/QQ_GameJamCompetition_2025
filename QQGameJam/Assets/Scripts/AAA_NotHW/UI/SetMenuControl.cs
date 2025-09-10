@@ -19,30 +19,31 @@ public class SetMenuControl : SingletonMonoBehavior<SetMenuControl>
     public Button ResetBtn;
     [Header("按键配置")]
     [SerializeField] private string[] keyNames = { "", "", "", "", "", "" };
-    [SerializeField] private KeyCode[] defaultKeys = { 
-        KeyCode.Q, KeyCode.W, KeyCode.E, KeyCode.R, KeyCode.T, KeyCode.Y 
+    [SerializeField]
+    private KeyCode[] defaultKeys = {
+        KeyCode.Q, KeyCode.W, KeyCode.E, KeyCode.R, KeyCode.T, KeyCode.Y
     };
-    
+
     [Header("设置")]
     [SerializeField] private Color normalColor = Color.white;
     [SerializeField] private Color waitingColor = Color.yellow;
     [SerializeField] private Color conflictColor = Color.red;
     [SerializeField] private Color successColor = Color.green;
     [SerializeField] private float waitingTimeout = 5f; // 等待输入超时时间
-    
+
     [Header("冲突处理设置")]
     [SerializeField] private ConflictResolutionMode conflictMode = ConflictResolutionMode.AutoAssign;
     [SerializeField] private bool showConflictMessages = true;
-    
+
     // 当前按键配置
     private KeyCode[] currentKeys;
     private int waitingForKeyIndex = -1; // 当前等待输入的按钮索引
     private Coroutine waitingCoroutine;
-    
+
     // UI组件缓存
     private TextMeshProUGUI[] buttonTexts;
     private Image[] buttonImages;
-    
+
     // 按键设置保存的键名
     private readonly string SAVE_KEY_PREFIX = "GameKey_";
 
@@ -54,6 +55,11 @@ public class SetMenuControl : SingletonMonoBehavior<SetMenuControl>
         UpdateButtonDisplays();
 
         ResetBtn.onClick.AddListener(ResetToDefaultFromInspector);
+    }
+
+    public KeyCode GetcurrentKeys(int index)
+    {
+        return currentKeys[index];
     }
 
     /// <summary>
@@ -90,10 +96,10 @@ public class SetMenuControl : SingletonMonoBehavior<SetMenuControl>
             {
                 // 获取按钮图片组件
                 buttonImages[i] = Btns[i].GetComponent<Image>();
-                
+
                 // 获取子物体上的文本组件
                 buttonTexts[i] = Btns[i].GetComponentInChildren<TextMeshProUGUI>();
-                
+
                 if (buttonTexts[i] == null)
                 {
                     // 如果没有找到TMPro，尝试查找普通Text
@@ -138,13 +144,13 @@ public class SetMenuControl : SingletonMonoBehavior<SetMenuControl>
         }
 
         waitingForKeyIndex = buttonIndex;
-        
+
         // 更新按钮显示
         UpdateButtonDisplay(buttonIndex, "按任意键...", waitingColor);
-        
+
         // 开始等待输入协程
         waitingCoroutine = StartCoroutine(WaitForKeyInput());
-        
+
         Debug.Log($"等待为 {keyNames[buttonIndex]} 设置新按键...");
     }
 
@@ -154,7 +160,7 @@ public class SetMenuControl : SingletonMonoBehavior<SetMenuControl>
     private IEnumerator WaitForKeyInput()
     {
         float waitTime = 0f;
-        
+
         while (waitTime < waitingTimeout)
         {
             // 检测按键输入
@@ -171,11 +177,11 @@ public class SetMenuControl : SingletonMonoBehavior<SetMenuControl>
                     }
                 }
             }
-            
+
             waitTime += Time.deltaTime;
             yield return null;
         }
-        
+
         // 超时处理
         Debug.Log("等待按键输入超时");
         StopKeyBinding();
@@ -189,11 +195,11 @@ public class SetMenuControl : SingletonMonoBehavior<SetMenuControl>
         // 排除鼠标按键
         if (key >= KeyCode.Mouse0 && key <= KeyCode.Mouse6)
             return false;
-            
+
         // 排除操纵杆按键（可根据需要调整）
         if (key >= KeyCode.JoystickButton0 && key <= KeyCode.Joystick8Button19)
             return false;
-            
+
         return true;
     }
 
@@ -204,7 +210,7 @@ public class SetMenuControl : SingletonMonoBehavior<SetMenuControl>
     {
         // 检查是否与其他按键冲突
         int conflictIndex = FindKeyConflict(newKey, buttonIndex);
-        
+
         if (conflictIndex != -1)
         {
             // 找到冲突，处理冲突
@@ -216,7 +222,7 @@ public class SetMenuControl : SingletonMonoBehavior<SetMenuControl>
             currentKeys[buttonIndex] = newKey;
             Debug.Log($"{keyNames[buttonIndex]} 设置为: {newKey}");
         }
-        
+
         // 更新显示和保存设置
         UpdateButtonDisplays();
         SaveKeySettings();
@@ -253,11 +259,11 @@ public class SetMenuControl : SingletonMonoBehavior<SetMenuControl>
             case ConflictResolutionMode.Swap:
                 SwapKeys(newButtonIndex, conflictIndex, newKey);
                 break;
-                
+
             case ConflictResolutionMode.AutoAssign:
                 AssignAvailableKey(newButtonIndex, newKey, conflictIndex);
                 break;
-                
+
             case ConflictResolutionMode.CancelAndWarn:
                 CancelKeySettingWithWarning(newButtonIndex, newKey, conflictIndex);
                 break;
@@ -272,9 +278,9 @@ public class SetMenuControl : SingletonMonoBehavior<SetMenuControl>
         KeyCode oldKey = currentKeys[newButtonIndex];
         currentKeys[newButtonIndex] = newKey;
         currentKeys[conflictIndex] = oldKey;
-        
+
         Debug.Log($"按键冲突：{keyNames[newButtonIndex]} 设置为 {newKey}，{keyNames[conflictIndex]} 改为 {oldKey}");
-        
+
         if (showConflictMessages)
         {
             StartCoroutine(ShowSwapMessage(newButtonIndex, conflictIndex, newKey, oldKey));
@@ -288,15 +294,15 @@ public class SetMenuControl : SingletonMonoBehavior<SetMenuControl>
     {
         // 设置新按键
         currentKeys[newButtonIndex] = newKey;
-        
+
         // 为冲突的按钮找一个可用的按键
         KeyCode availableKey = FindAvailableKey();
-        
+
         if (availableKey != KeyCode.None)
         {
             currentKeys[conflictIndex] = availableKey;
             Debug.Log($"按键冲突解决：{keyNames[newButtonIndex]} 设置为 {newKey}，{keyNames[conflictIndex]} 自动改为 {availableKey}");
-            
+
             if (showConflictMessages)
             {
                 StartCoroutine(ShowAutoAssignMessage(newButtonIndex, conflictIndex, newKey, availableKey));
@@ -315,7 +321,7 @@ public class SetMenuControl : SingletonMonoBehavior<SetMenuControl>
     private void CancelKeySettingWithWarning(int newButtonIndex, KeyCode newKey, int conflictIndex)
     {
         Debug.LogWarning($"按键 {newKey} 已被 {keyNames[conflictIndex]} 使用，请选择其他按键");
-        
+
         if (showConflictMessages)
         {
             StartCoroutine(ShowConflictWarning(newButtonIndex, newKey, conflictIndex));
@@ -337,7 +343,7 @@ public class SetMenuControl : SingletonMonoBehavior<SetMenuControl>
             KeyCode.F1, KeyCode.F2, KeyCode.F3, KeyCode.F4, KeyCode.F5, KeyCode.F6,
             KeyCode.F7, KeyCode.F8, KeyCode.F9, KeyCode.F10, KeyCode.F11, KeyCode.F12
         };
-        
+
         // 查找未被使用的按键
         foreach (KeyCode candidate in candidateKeys)
         {
@@ -346,7 +352,7 @@ public class SetMenuControl : SingletonMonoBehavior<SetMenuControl>
                 return candidate;
             }
         }
-        
+
         return KeyCode.None; // 没有可用按键
     }
 
@@ -375,9 +381,9 @@ public class SetMenuControl : SingletonMonoBehavior<SetMenuControl>
             buttonTexts[newIndex].color = successColor;
         if (buttonTexts[conflictIndex] != null)
             buttonTexts[conflictIndex].color = successColor;
-        
+
         yield return new WaitForSeconds(1f);
-        
+
         // 恢复正常颜色
         if (buttonTexts[newIndex] != null)
             buttonTexts[newIndex].color = normalColor;
@@ -393,13 +399,13 @@ public class SetMenuControl : SingletonMonoBehavior<SetMenuControl>
         // 新设置的按钮显示成功颜色
         if (buttonTexts[newIndex] != null)
             buttonTexts[newIndex].color = successColor;
-        
+
         // 被重新分配的按钮显示警告颜色
         if (buttonTexts[conflictIndex] != null)
             buttonTexts[conflictIndex].color = waitingColor;
-        
+
         yield return new WaitForSeconds(2f);
-        
+
         // 恢复正常颜色
         if (buttonTexts[newIndex] != null)
             buttonTexts[newIndex].color = normalColor;
@@ -418,9 +424,9 @@ public class SetMenuControl : SingletonMonoBehavior<SetMenuControl>
             string originalText = buttonTexts[buttonIndex].text;
             buttonTexts[buttonIndex].text = $"冲突！{conflictKey} 已被{keyNames[conflictIndex]}使用";
             buttonTexts[buttonIndex].color = conflictColor;
-            
+
             yield return new WaitForSeconds(2f);
-            
+
             // 恢复并重新开始绑定
             buttonTexts[buttonIndex].color = normalColor;
             StartKeyBinding(buttonIndex);
@@ -543,14 +549,14 @@ public class SetMenuControl : SingletonMonoBehavior<SetMenuControl>
     public void ResetToDefault()
     {
         System.Array.Copy(defaultKeys, currentKeys, defaultKeys.Length);
-        
+
         // 验证默认配置是否有重复
         if (!ValidateKeyConfiguration())
         {
             Debug.LogError("默认按键配置有重复，请检查 defaultKeys 数组");
             return;
         }
-        
+
         UpdateButtonDisplays();
         SaveKeySettings();
         Debug.Log("按键设置已重置为默认值");
@@ -573,7 +579,7 @@ public class SetMenuControl : SingletonMonoBehavior<SetMenuControl>
                 }
             }
         }
-        
+
         // 检查是否有无效按键
         for (int i = 0; i < currentKeys.Length; i++)
         {
@@ -583,7 +589,7 @@ public class SetMenuControl : SingletonMonoBehavior<SetMenuControl>
                 return false;
             }
         }
-        
+
         return true;
     }
 
@@ -627,6 +633,15 @@ public class SetMenuControl : SingletonMonoBehavior<SetMenuControl>
         return false;
     }
 
+    public bool IsKeyHold(int index)
+    {
+        if (index >= 0 && index < currentKeys.Length)
+        {
+            return Input.GetKey(currentKeys[index]);
+        }
+        return false;
+    }
+
     private void OnDestroy()
     {
         // 清理事件监听
@@ -646,7 +661,7 @@ public class SetMenuControl : SingletonMonoBehavior<SetMenuControl>
     }
 
     #region 调试和扩展功能
-    
+
     /// <summary>
     /// 在Inspector中显示重置按钮
     /// </summary>
@@ -679,7 +694,7 @@ public class SetMenuControl : SingletonMonoBehavior<SetMenuControl>
     private void CheckForDuplicateKeys()
     {
         Debug.Log("=== 检查按键重复 ===");
-        
+
         bool foundDuplicates = false;
         for (int i = 0; i < currentKeys.Length; i++)
         {
@@ -692,12 +707,12 @@ public class SetMenuControl : SingletonMonoBehavior<SetMenuControl>
                 }
             }
         }
-        
+
         if (!foundDuplicates)
         {
             Debug.Log("没有发现重复按键，配置正常");
         }
-        
+
         Debug.Log("按键重复检查完成");
     }
 

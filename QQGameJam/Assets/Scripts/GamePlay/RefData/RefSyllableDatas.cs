@@ -6,7 +6,8 @@ public class RefSyllableDatas : RefBase
 {
     public static Dictionary<int, RefSyllableDatas> cacheMap = new Dictionary<int, RefSyllableDatas>();
     public int ID;  // ID
-    public string Path; // 谱面SO文件地址
+    public string Path_1; // 谱面SO文件地址
+    public string Path_2; // 战斗演出SO文件地址
     public string Desc; // 描述
 
     public override string GetFirstKeyName()
@@ -17,7 +18,8 @@ public class RefSyllableDatas : RefBase
     {
         base.LoadByLine(_value, _line);
         ID = GetInt("ID");
-        Path = GetString("Path");
+        Path_1 = GetString("Path_1");
+        Path_2 = GetString("Path_2");
         Desc = GetString("Desc");
     }
     public static RefSyllableDatas GetRef(int ID)
@@ -46,15 +48,38 @@ public class RefSyllableDatas : RefBase
         }
 
         // 从Resources文件夹加载图片资源
-        string resourcePath = refData.Path.Replace("Resources/", ""); // 移除"Resources/"前缀
+        string resourcePath = refData.Path_1.Replace("Resources/", ""); // 移除"Resources/"前缀
         SyllableData_SO syllableData_SO = Resources.Load<SyllableData_SO>(resourcePath);
 
         if (syllableData_SO == null)
         {
-            Debug.LogError($"Failed to load SyllableData_SO from path: {refData.Path}");
+            Debug.LogError($"Failed to load SyllableData_SO from path: {refData.Path_1}");
             return null;
         }
-        Debug.Log($"Successfully loaded SyllableData_SO: {syllableData_SO.name} from path: {refData.Path}");
+        // Debug.Log($"Successfully loaded SyllableData_SO: {syllableData_SO.name} from path: {refData.Path}");
         return syllableData_SO;
+    }
+
+    public static BattleSceneData_SO GetBattleSceneData_SOByID(int ID)
+    {
+        // 通过ID获取RefImage数据
+        RefSyllableDatas refData = GetRef(ID);
+        if (refData == null)
+        {
+            Debug.LogError($"RefImage with ID {ID} not found!");
+            return null;
+        }
+
+        // 从Resources文件夹加载图片资源
+        string resourcePath = refData.Path_2.Replace("Resources/", ""); // 移除"Resources/"前缀
+        BattleSceneData_SO battleSceneData_SO = Resources.Load<BattleSceneData_SO>(resourcePath);
+
+        if (battleSceneData_SO == null)
+        {
+            Debug.LogError($"Failed to load BattleSceneData_SO from path: {refData.Path_2}");
+            return null;
+        }
+        // Debug.Log($"Successfully loaded SyllableData_SO: {syllableData_SO.name} from path: {refData.Path}");
+        return battleSceneData_SO;
     }
 }

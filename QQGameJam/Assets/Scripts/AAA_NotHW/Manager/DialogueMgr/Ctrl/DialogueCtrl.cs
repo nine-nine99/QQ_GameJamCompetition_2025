@@ -74,7 +74,7 @@ public class DialogueCtrl : SingletonMonoBehavior<DialogueCtrl>
     // 当对话框被点击时
     private void OnImageClicked()
     {
-        Debug.Log("玩家点击了对话图片!");
+        // Debug.Log("玩家点击了对话图片!");
 
         // 每次点击跳到下一段对话
 
